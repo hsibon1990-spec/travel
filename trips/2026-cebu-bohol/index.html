@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>宿霧・薄荷島｜旅遊規劃</title>
-<meta name="description" content="2026 跨年宿霧與薄荷島行程，含領隊叮嚀、即時天氣、海況、匯率與當地資訊">
+<title>宿霧・薄荷島 Cebu & Bohol｜旅遊規劃</title>
+<meta name="description" content="2026 跨年宿霧與薄荷島行程 / New Year trip to Cebu and Bohol, with live weather, sea state and exchange rate">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -24,28 +24,36 @@
   .num { font-family: var(--num); font-variant-numeric: tabular-nums; }
   .wrap { max-width: 720px; margin: 0 auto; }
 
+  /* English line under Chinese */
+  .en { display: block; font-size: .82em; line-height: 1.45; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+  .hero .en, .tiles .en { color: rgba(247,243,232,.75); }
+  h1 .en { font-size: .36em; font-weight: 500; margin-top: 2px; color: var(--mango); }
+  .tabs button .en { font-size: 11px; margin-top: 2px; color: inherit; opacity: .75; }
+  .pending .en { display: inline; font-size: 1em; color: inherit; margin-left: 3px; }
+
   .hero { background: var(--sea); color: var(--sand); border-bottom: 8px solid var(--mango); }
   .hero .wrap { padding: 20px 16px 26px; position: relative; }
   .back { font-size: 14px; opacity: .85; text-decoration: none; }
   .back:hover { text-decoration: underline; }
   .hero .kicker { display: block; margin-top: 22px; color: var(--mango); font-weight: 700; }
-  .hero h1 { margin: 4px 0 6px; font: 900 clamp(38px, 10vw, 56px)/1.1 var(--sans); letter-spacing: .02em; }
+  .hero .kicker .en { display: inline; margin-left: 6px; color: var(--mango); opacity: .8; }
+  .hero h1 { margin: 4px 0 8px; font: 900 clamp(38px, 10vw, 56px)/1.1 var(--sans); letter-spacing: .02em; padding-right: 90px; }
   .hero p { margin: 0; opacity: .9; }
   .postmark { position: absolute; right: 16px; top: 56px; width: 84px; height: 84px; border: 2px dashed var(--coral); border-radius: 50%;
     display: grid; place-content: center; text-align: center; transform: rotate(-10deg); color: var(--mango); line-height: 1.1; }
   .postmark b { font: 600 34px/1 var(--num); display: block; }
-  .postmark small { font-size: 12px; color: var(--sand); }
+  .postmark small { font-size: 10px; line-height: 1.2; color: var(--sand); display: block; margin-top: 2px; }
 
   .tiles { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--deep); color: var(--sand); }
   .tile { padding: 12px 14px 14px; border-right: 1px solid rgba(247,243,232,.15); }
   .tile:last-child { border-right: 0; }
   .tile .v { font-size: 30px; line-height: 1.1; color: var(--mango); }
-  .tile .k { font-size: 13px; opacity: .85; }
+  .tile .k { font-size: 13px; opacity: .9; }
   .tile .s { font-size: 12px; opacity: .7; }
 
   main.wrap { padding: 20px 16px 64px; }
-  .tabs { display: flex; gap: 8px; overflow-x: auto; margin: 0 0 16px; position: sticky; top: 0; background: var(--page); padding: 10px 0 4px; z-index: 2; }
-  .tabs button { flex: none; border: 0; cursor: pointer; font: 500 15px/1 var(--sans); background: #fff; color: var(--ink); border-radius: 999px; padding: 9px 16px; }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; margin: 0 0 16px; position: sticky; top: 0; background: var(--page); padding: 10px 0 4px; z-index: 1000; }
+  .tabs button { flex: none; border: 0; cursor: pointer; font: 500 15px/1.2 var(--sans); background: #fff; color: var(--ink); border-radius: 14px; padding: 8px 14px; text-align: center; }
   .tabs button[aria-selected="true"] { background: var(--sea); color: var(--sand); box-shadow: inset 0 -3px 0 var(--mango); }
   [role="tabpanel"][hidden] { display: none; }
 
@@ -54,11 +62,11 @@
 
   .card { background: var(--sand); border-radius: 6px; padding: 14px 16px; margin-bottom: 12px; }
   .card h3 { margin: 0 0 4px; font-size: 17px; color: var(--sea); }
-  .card p { margin: 0; color: var(--muted); font-size: 15px; }
-  .card ul { margin: 4px 0 0; padding-left: 1.2em; color: var(--muted); font-size: 15px; }
+  .card p { margin: 0; color: var(--ink); font-size: 15px; }
+  .card ul { margin: 4px 0 0; padding-left: 1.2em; font-size: 15px; }
+  .card li { margin-bottom: 4px; }
   .where { display: inline-block; font-size: 13px; color: var(--sea); background: #fff; border-radius: 999px; padding: 0 10px; margin-bottom: 6px; }
 
-  /* day */
   .day { background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 14px; }
   .day > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .day .date { font: 600 28px/1 var(--num); color: var(--sea); }
@@ -68,19 +76,22 @@
   .wx.on { display: block; }
 
   .steps { list-style: none; margin: 12px 0 0; padding: 0; }
-  .steps li { display: grid; grid-template-columns: 54px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .steps li { display: grid; grid-template-columns: 58px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
   .steps time { font: 600 19px/1.4 var(--num); color: var(--sea); text-align: right; }
-  .steps time.soft { font: 500 14px/1.9 var(--sans); color: var(--muted); }
+  .steps time.soft { font: 500 14px/1.5 var(--sans); color: var(--muted); }
+  .steps time .en { font-size: 11px; }
   .steps b { display: block; }
-  .steps p { margin: 2px 0 0; font-size: 14.5px; color: var(--muted); }
+  .steps p { margin: 2px 0 0; font-size: 14.5px; }
   .pending { display: inline-block; font-size: 12px; color: var(--coral); border: 1px solid var(--coral); border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: 1px; font-weight: 400; }
 
   .tip { margin-top: 12px; background: var(--tip); border-left: 4px solid var(--mango); border-radius: 6px; padding: 10px 12px; }
-  .tip strong { display: block; font-size: 14px; color: var(--sea); margin-bottom: 2px; }
+  .tip strong { display: block; font-size: 14px; color: var(--sea); margin-bottom: 4px; }
+  .tip strong .en { display: inline; margin-left: 6px; }
   .tip ul { margin: 0; padding-left: 1.1em; font-size: 14.5px; }
+  .tip li { margin-bottom: 6px; }
   .stay { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
 
-  .facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; margin: 0; }
   .facts dt { color: var(--muted); }
   .facts dd { margin: 0; }
 
@@ -90,8 +101,8 @@
   .places { list-style: none; margin: 0; padding: 0; }
   .places li { background: #fff; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
   .places button { border: 0; background: none; font: 500 15px/1.4 var(--sans); color: var(--ink); text-align: left; cursor: pointer; padding: 0; }
-  .places small { display: block; color: var(--muted); font-size: 13px; }
-  .places a { flex: none; font-size: 13px; color: var(--sea); }
+  .places small { display: block; color: var(--muted); font-size: 13px; font-weight: 400; }
+  .places a { flex: none; font-size: 13px; color: var(--sea); text-align: center; }
   .leaflet-popup-content { font: 400 14px/1.5 var(--sans); }
 
   footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
@@ -100,138 +111,139 @@
     .tiles { grid-template-columns: 1fr 1fr; }
     .tile:nth-child(2) { border-right: 0; }
     .tile:nth-child(-n+2) { border-bottom: 1px solid rgba(247,243,232,.15); }
-    .postmark { width: 66px; height: 66px; top: 52px; }
+    .postmark { width: 70px; height: 70px; top: 52px; }
     .postmark b { font-size: 26px; }
+    .hero h1 { padding-right: 70px; }
   }
 </style>
 </head>
 <body>
   <header class="hero">
     <div class="wrap">
-      <a class="back" href="../../">所有旅程</a>
-      <span class="kicker">跨年之旅</span>
-      <h1>宿霧・薄荷島</h1>
-      <p>2026/12/31 – 2027/1/4，5 天 4 夜，兩個人</p>
-      <div class="postmark" aria-live="polite"><b id="days">--</b><small id="days-label">天後出發</small></div>
+      <a class="back" href="../../">所有旅程 All trips</a>
+      <span class="kicker">跨年之旅<span class="en" lang="en">New Year Trip</span></span>
+      <h1>宿霧・薄荷島<span class="en" lang="en">Cebu & Bohol</span></h1>
+      <p>2026/12/31 – 2027/1/4，5 天 4 夜，兩個人<span class="en" lang="en">5 days, 4 nights, 2 travelers</span></p>
+      <div class="postmark" aria-live="polite"><b id="days">--</b><small id="days-label">天後出發<br>days to go</small></div>
     </div>
   </header>
 
-  <section class="tiles" aria-label="即時天氣、海況與匯率">
-    <div class="tile"><div class="v num" data-wx="cebu">--</div><div class="k">宿霧</div><div class="s" data-wxt="cebu"></div></div>
-    <div class="tile"><div class="v num" data-wx="panglao">--</div><div class="k">邦勞島</div><div class="s" data-wxt="panglao"></div></div>
-    <div class="tile"><div class="v num" id="wave">--</div><div class="k">海浪高度</div><div class="s">宿霧—薄荷島海峽</div></div>
-    <div class="tile"><div class="v num" id="fx">--</div><div class="k">1 披索（新台幣）</div><div class="s" id="fx2"></div></div>
+  <section class="tiles" aria-label="即時天氣、海況與匯率 Live weather, sea state and exchange rate">
+    <div class="tile"><div class="v num" data-wx="cebu">--</div><div class="k">宿霧<span class="en" lang="en">Cebu</span></div><div class="s" data-wxt="cebu"></div></div>
+    <div class="tile"><div class="v num" data-wx="panglao">--</div><div class="k">邦勞島<span class="en" lang="en">Panglao</span></div><div class="s" data-wxt="panglao"></div></div>
+    <div class="tile"><div class="v num" id="wave">--</div><div class="k">海浪高度<span class="en" lang="en">Wave height</span></div><div class="s">宿霧—薄荷島海峽 Bohol Strait</div></div>
+    <div class="tile"><div class="v num" id="fx">--</div><div class="k">1 披索（新台幣）<span class="en" lang="en">TWD per 1 PHP</span></div><div class="s" id="fx2"></div></div>
   </section>
 
   <main class="wrap">
-    <div class="tabs" role="tablist" aria-label="旅程資訊">
-      <button role="tab" id="t-plan" aria-controls="p-plan" aria-selected="true">行程</button>
-      <button role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">地圖</button>
-      <button role="tab" id="t-prep" aria-controls="p-prep" aria-selected="false" tabindex="-1">行前準備</button>
-      <button role="tab" id="t-move" aria-controls="p-move" aria-selected="false" tabindex="-1">交通</button>
-      <button role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">購物</button>
-      <button role="tab" id="t-eat" aria-controls="p-eat" aria-selected="false" tabindex="-1">餐廳</button>
-      <button role="tab" id="t-see" aria-controls="p-see" aria-selected="false" tabindex="-1">景點</button>
-      <button role="tab" id="t-fun" aria-controls="p-fun" aria-selected="false" tabindex="-1">有趣的事</button>
-      <button role="tab" id="t-info" aria-controls="p-info" aria-selected="false" tabindex="-1">實用資訊</button>
+    <div class="tabs" role="tablist" aria-label="旅程資訊 Trip info">
+      <button role="tab" id="t-plan" aria-controls="p-plan" aria-selected="true">行程<span class="en" lang="en">Itinerary</span></button>
+      <button role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">地圖<span class="en" lang="en">Map</span></button>
+      <button role="tab" id="t-prep" aria-controls="p-prep" aria-selected="false" tabindex="-1">行前準備<span class="en" lang="en">Before you go</span></button>
+      <button role="tab" id="t-move" aria-controls="p-move" aria-selected="false" tabindex="-1">交通<span class="en" lang="en">Getting around</span></button>
+      <button role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">購物<span class="en" lang="en">Shopping</span></button>
+      <button role="tab" id="t-eat" aria-controls="p-eat" aria-selected="false" tabindex="-1">餐廳<span class="en" lang="en">Food</span></button>
+      <button role="tab" id="t-see" aria-controls="p-see" aria-selected="false" tabindex="-1">景點<span class="en" lang="en">Sights</span></button>
+      <button role="tab" id="t-fun" aria-controls="p-fun" aria-selected="false" tabindex="-1">有趣的事<span class="en" lang="en">Fun facts</span></button>
+      <button role="tab" id="t-info" aria-controls="p-info" aria-selected="false" tabindex="-1">實用資訊<span class="en" lang="en">Essentials</span></button>
     </div>
 
     <!-- 行程 -->
     <section role="tabpanel" id="p-plan" aria-labelledby="t-plan">
-      <h2>逐日行程</h2>
-      <p class="lead">出發前 16 天起，每天的卡片會自動顯示當地天氣預報；搭船那兩天另外顯示海浪高度。</p>
+      <h2>逐日行程<span class="en" lang="en">Day by day</span></h2>
+      <p class="lead">出發前 16 天起，每天的卡片會自動顯示當地天氣預報；搭船那兩天另外顯示海浪高度。<span class="en" lang="en">From 16 days before departure, each day shows the local forecast. Ferry days also show wave height.</span></p>
 
       <article class="day" data-date="2026-12-31" data-spot="cebu">
-        <header><span class="date">12/31</span><span class="dow">週四</span><h3>抵達宿霧，在 IT Park 跨年</h3></header>
+        <header><span class="date">12/31</span><span class="dow">週四 Thu</span><h3>抵達宿霧，在 IT Park 跨年<span class="en" lang="en">Arrive in Cebu, New Year's Eve at IT Park</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time class="soft">上午</time><div><b>抵達麥克坦－宿霧國際機場</b><p>入境時出示兩人的 eTravel QR code、回程機票與住宿確認。</p></div></li>
-          <li><time class="soft">接著</time><div><b>搭 Grab 到 IT Park</b><p>車程約 45–75 分鐘，車資約 ₱600–900。Grab 上車點在第一、第二航廈入境大廳對面的停車場。</p></div></li>
-          <li><time class="soft">中午</time><div><b>Seda Central Bloc 寄放行李</b><p>先放行李、在 Ayala Malls Central Bloc 吃午餐，下午回飯店入住補眠。</p></div></li>
-          <li><time class="soft">晚上</time><div><b>跨年晚餐與煙火</b><p>IT Park 一帶的高樓餐廳有跨年方案，可以邊吃邊看煙火。<span class="pending">今年方案 12 月公布</span></p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>抵達麥克坦－宿霧國際機場<span class="en" lang="en">Arrive at Mactan-Cebu International Airport</span></b><p>入境時出示兩人的 eTravel QR code、回程機票與住宿確認。<span class="en" lang="en">Show both eTravel QR codes, return tickets and hotel confirmations at immigration.</span></p></div></li>
+          <li><time class="soft">接著<span class="en" lang="en">Then</span></time><div><b>搭 Grab 到 IT Park<span class="en" lang="en">Grab to IT Park</span></b><p>車程約 45–75 分鐘，車資約 ₱600–900。Grab 上車點在第一、第二航廈入境大廳對面的停車場。<span class="en" lang="en">About 45–75 min, ₱600–900. Grab pickup is in the car park opposite Terminal 1 and 2 arrivals.</span></p></div></li>
+          <li><time class="soft">中午<span class="en" lang="en">Noon</span></time><div><b>Seda Central Bloc 寄放行李<span class="en" lang="en">Drop bags at Seda Central Bloc</span></b><p>先放行李、在 Ayala Malls Central Bloc 吃午餐，下午回飯店入住補眠。<span class="en" lang="en">Leave bags, lunch at Ayala Malls Central Bloc, then check in and nap in the afternoon.</span></p></div></li>
+          <li><time class="soft">晚上<span class="en" lang="en">Evening</span></time><div><b>跨年晚餐與煙火<span class="en" lang="en">New Year's Eve dinner and fireworks</span></b><p>IT Park 一帶的高樓餐廳有跨年方案，可以邊吃邊看煙火。<span class="pending">今年方案 12 月公布<span class="en" lang="en">Announced in December</span></span><span class="en" lang="en">Rooftop restaurants around IT Park offer countdown packages with fireworks views.</span></p></div></li>
         </ol>
-        <div class="tip"><strong>領隊叮嚀</strong>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
-            <li>早班機起得早，下午務必補眠，晚上才撐得到跨年。</li>
-            <li>跨年夜街上常有民間放鞭炮和煙火，保持距離，貴重物品收好。</li>
-            <li>午夜後很難叫車，住 IT Park 走路就能回飯店，這是選這間的好處。</li>
-            <li>睡前先把隔天搭船的行李整理好。</li>
+            <li>早班機起得早，下午務必補眠，晚上才撐得到跨年。<span class="en" lang="en">After the early flight, nap in the afternoon so you can stay up for midnight.</span></li>
+            <li>跨年夜街上常有民間放鞭炮和煙火，保持距離，貴重物品收好。<span class="en" lang="en">Expect private firecrackers on the streets. Keep your distance and keep valuables secure.</span></li>
+            <li>午夜後很難叫車，住 IT Park 走路就能回飯店，這是選這間的好處。<span class="en" lang="en">Rides are hard to get after midnight. Staying in IT Park means you can walk back.</span></li>
+            <li>睡前先把隔天搭船的行李整理好。<span class="en" lang="en">Pack for the next day's ferry before bed.</span></li>
           </ul>
         </div>
-        <span class="stay">住宿：Seda Central Bloc Cebu</span>
+        <span class="stay">住宿 Stay：Seda Central Bloc Cebu</span>
       </article>
 
       <article class="day" data-date="2027-01-01" data-spot="panglao" data-sea>
-        <header><span class="date">1/1</span><span class="dow">週五・元旦</span><h3>搭船到薄荷島</h3></header>
+        <header><span class="date">1/1</span><span class="dow">週五・元旦 Fri, New Year's Day</span><h3>搭船到薄荷島<span class="en" lang="en">Ferry to Bohol</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time class="soft">上午</time><div><b>退房，搭 Grab 到 Pier 1</b><p>元旦早上路上車少，但碼頭人多，提早出門。</p></div></li>
-          <li><time class="soft">開船前</time><div><b>碼頭報到</b><p>開船前 45–60 分鐘到，報到截止是開船前 30 分鐘。碼頭稅要另外用披索現金付。</p></div></li>
-          <li><time>11:40</time><div><b>OceanJet 商務艙 → 塔比拉蘭</b><p>航程約 2 小時，候選班次 11:40、13:00、14:00。<span class="pending">船票尚未開放</span></p></div></li>
-          <li><time class="soft">下午</time><div><b>港口接送到邦勞島</b><p>車程 30–45 分鐘。薄荷島沒有 Grab，請飯店接送或預約包車。</p></div></li>
-          <li><time>15:00</time><div><b>Henann Tawala Resort 入住</b><p>15:00 起可入住。入住時要付押金，每晚 ₱3,000。</p></div></li>
-          <li><time class="soft">傍晚</time><div><b>Alona Beach 看夕陽</b><p>從飯店走路約 2 分鐘。<span class="sunset"></span></p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>退房，搭 Grab 到 Pier 1<span class="en" lang="en">Check out, Grab to Pier 1</span></b><p>元旦早上路上車少，但碼頭人多，提早出門。<span class="en" lang="en">Roads are quiet on New Year's morning, but the pier is busy. Leave early.</span></p></div></li>
+          <li><time class="soft">開船前<span class="en" lang="en">Before sailing</span></time><div><b>碼頭報到<span class="en" lang="en">Check in at the pier</span></b><p>開船前 45–60 分鐘到，報到截止是開船前 30 分鐘。碼頭稅要另外用披索現金付。<span class="en" lang="en">Arrive 45–60 min early; check-in closes 30 min before departure. The terminal fee is paid separately in pesos, cash only.</span></p></div></li>
+          <li><time>11:40</time><div><b>OceanJet 商務艙 → 塔比拉蘭<span class="en" lang="en">OceanJet Business Class → Tagbilaran</span></b><p>航程約 2 小時，候選班次 11:40、13:00、14:00。<span class="pending">船票尚未開放<span class="en" lang="en">Not on sale yet</span></span><span class="en" lang="en">About 2 hours. Candidate sailings: 11:40, 13:00, 14:00.</span></p></div></li>
+          <li><time class="soft">下午<span class="en" lang="en">Afternoon</span></time><div><b>港口接送到邦勞島<span class="en" lang="en">Transfer to Panglao</span></b><p>車程 30–45 分鐘。薄荷島沒有 Grab，請飯店接送或預約包車。<span class="en" lang="en">30–45 min. There is no Grab on Bohol, so book a hotel transfer or private van.</span></p></div></li>
+          <li><time>15:00</time><div><b>Henann Tawala Resort 入住<span class="en" lang="en">Check in at Henann Tawala Resort</span></b><p>15:00 起可入住。入住時要付押金，每晚 ₱3,000。<span class="en" lang="en">Check-in from 15:00. A deposit of ₱3,000 per night is required.</span></p></div></li>
+          <li><time class="soft">傍晚<span class="en" lang="en">Sunset</span></time><div><b>Alona Beach 看夕陽<span class="en" lang="en">Sunset at Alona Beach</span></b><p>從飯店走路約 2 分鐘。<span class="sunset"></span><span class="en" lang="en">About a 2-minute walk from the resort.</span></p></div></li>
         </ol>
-        <div class="tip"><strong>領隊叮嚀</strong>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
-            <li>商務艙每人可免費託運 20 公斤，手提限 10 公斤、25×35×40 公分；有輪子的行李箱一律要託運。</li>
-            <li>容易暈船的話，上船前 30 分鐘吃暈船藥。</li>
-            <li>颱風或強風警報時船班可能停駛，出發前一天先看海況和 OceanJet 公告。</li>
+            <li>商務艙每人可免費託運 20 公斤，手提限 10 公斤、25×35×40 公分；有輪子的行李箱一律要託運。<span class="en" lang="en">Business Class allows 20 kg checked per person; carry-on up to 10 kg and 25×35×40 cm. Wheeled suitcases must be checked.</span></li>
+            <li>容易暈船的話，上船前 30 分鐘吃暈船藥。<span class="en" lang="en">If you get seasick, take medication 30 minutes before boarding.</span></li>
+            <li>颱風或強風警報時船班可能停駛，出發前一天先看海況和 OceanJet 公告。<span class="en" lang="en">Sailings may be cancelled during storm warnings. Check sea conditions and OceanJet notices the day before.</span></li>
           </ul>
         </div>
-        <span class="stay">住宿：Henann Tawala Resort</span>
+        <span class="stay">住宿 Stay：Henann Tawala Resort</span>
       </article>
 
       <article class="day" data-date="2027-01-02" data-spot="panglao">
-        <header><span class="date">1/2</span><span class="dow">週六</span><h3>薄荷島一日遊（建議路線）</h3></header>
+        <header><span class="date">1/2</span><span class="dow">週六 Sat</span><h3>薄荷島一日遊（建議路線）<span class="en" lang="en">Bohol countryside tour (suggested)</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time>07:30</time><div><b>包車從飯店出發</b><p>私人包車約每車 ₱2,500–4,000。12–2 月是旺季，建議提前 2–3 週預約。<span class="pending">待確認</span></p></div></li>
-          <li><time class="soft">上午</time><div><b>巧克力山</b><p>門票 ₱100，停留約 1 小時。早上人少、光線也好。</p></div></li>
-          <li><time class="soft">接著</time><div><b>眼鏡猴保護區</b><p>門票 ₱60–100，停留約 45 分鐘。</p></div></li>
-          <li><time class="soft">中午</time><div><b>羅柏河竹筏自助午餐</b><p>每人 ₱850–950，約 1.5 小時，船上有樂手表演。</p></div></li>
-          <li><time class="soft">下午</time><div><b>人造森林、Baclayon 教堂</b><p>森林拍照約 15 分鐘；教堂免費參觀，可隨意奉獻。</p></div></li>
-          <li><time class="soft">傍晚</time><div><b>回飯店休息</b><p>全程約 8–9 小時，晚餐在飯店或 Alona Beach 一帶。</p></div></li>
+          <li><time>07:30</time><div><b>包車從飯店出發<span class="en" lang="en">Private van from the resort</span></b><p>私人包車約每車 ₱2,500–4,000。12–2 月是旺季，建議提前 2–3 週預約。<span class="pending">待確認<span class="en" lang="en">To confirm</span></span><span class="en" lang="en">About ₱2,500–4,000 per van. December to February is peak season; book 2–3 weeks ahead.</span></p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>巧克力山<span class="en" lang="en">Chocolate Hills</span></b><p>門票 ₱100，停留約 1 小時。早上人少、光線也好。<span class="en" lang="en">Entry ₱100, about 1 hour. Fewer crowds and better light in the morning.</span></p></div></li>
+          <li><time class="soft">接著<span class="en" lang="en">Then</span></time><div><b>眼鏡猴保護區<span class="en" lang="en">Tarsier Sanctuary</span></b><p>門票 ₱60–100，停留約 45 分鐘。<span class="en" lang="en">Entry ₱60–100, about 45 minutes.</span></p></div></li>
+          <li><time class="soft">中午<span class="en" lang="en">Lunch</span></time><div><b>羅柏河竹筏自助午餐<span class="en" lang="en">Loboc River cruise lunch</span></b><p>每人 ₱850–950，約 1.5 小時，船上有樂手表演。<span class="en" lang="en">₱850–950 per person, about 1.5 hours, with live music on board.</span></p></div></li>
+          <li><time class="soft">下午<span class="en" lang="en">Afternoon</span></time><div><b>人造森林、Baclayon 教堂<span class="en" lang="en">Man-made Forest, Baclayon Church</span></b><p>森林拍照約 15 分鐘；教堂免費參觀，可隨意奉獻。<span class="en" lang="en">About 15 minutes for photos in the forest. The church is free; donations welcome.</span></p></div></li>
+          <li><time class="soft">傍晚<span class="en" lang="en">Evening</span></time><div><b>回飯店休息<span class="en" lang="en">Back to the resort</span></b><p>全程約 8–9 小時，晚餐在飯店或 Alona Beach 一帶。<span class="en" lang="en">The full day takes 8–9 hours. Dinner at the resort or around Alona Beach.</span></p></div></li>
         </ol>
-        <div class="tip"><strong>領隊叮嚀</strong>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
-            <li>鄉間景點多半只收現金，準備小額披索，遊河樂手小費約 ₱50–100。</li>
-            <li>眼鏡猴白天在睡覺，保持安靜、不用閃光燈。</li>
-            <li>雨天備案：留在飯店泳池放鬆，下午去 Bohol Bee Farm 吃東西。</li>
+            <li>鄉間景點多半只收現金，準備小額披索，遊河樂手小費約 ₱50–100。<span class="en" lang="en">Countryside stops are mostly cash only. Bring small pesos; tip the river cruise musicians about ₱50–100.</span></li>
+            <li>眼鏡猴白天在睡覺，保持安靜、不用閃光燈。<span class="en" lang="en">Tarsiers sleep during the day. Keep quiet and don't use flash.</span></li>
+            <li>雨天備案：留在飯店泳池放鬆，下午去 Bohol Bee Farm 吃東西。<span class="en" lang="en">Rain plan: relax at the resort pool, then visit Bohol Bee Farm in the afternoon.</span></li>
           </ul>
         </div>
-        <span class="stay">住宿：Henann Tawala Resort</span>
+        <span class="stay">住宿 Stay：Henann Tawala Resort</span>
       </article>
 
       <article class="day" data-date="2027-01-03" data-spot="cebu" data-sea>
-        <header><span class="date">1/3</span><span class="dow">週日</span><h3>回宿霧市區</h3></header>
+        <header><span class="date">1/3</span><span class="dow">週日 Sun</span><h3>回宿霧市區<span class="en" lang="en">Back to Cebu City</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time class="soft">上午</time><div><b>早餐、海邊散步</b><p>早餐 6:00–10:00，泳池 8:00 開放。</p></div></li>
-          <li><time>11:00</time><div><b>退房</b><p>行李可以先寄放在櫃台。</p></div></li>
-          <li><time>13:00</time><div><b>OceanJet 商務艙 → 宿霧 Pier 1</b><p>候選班次 13:00、14:00。<span class="pending">船票尚未開放</span></p></div></li>
-          <li><time class="soft">傍晚</time><div><b>Grab 回 Seda Central Bloc</b><p>週日傍晚車多，預留時間。</p></div></li>
-          <li><time class="soft">晚上</time><div><b>IT Park 吃飯、最後採買</b><p>Ayala Malls Central Bloc 就在旁邊。</p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>早餐、海邊散步<span class="en" lang="en">Breakfast and a beach walk</span></b><p>早餐 6:00–10:00，泳池 8:00 開放。<span class="en" lang="en">Breakfast 6:00–10:00; the pool opens at 8:00.</span></p></div></li>
+          <li><time>11:00</time><div><b>退房<span class="en" lang="en">Check out</span></b><p>行李可以先寄放在櫃台。<span class="en" lang="en">You can leave your bags at the front desk.</span></p></div></li>
+          <li><time>13:00</time><div><b>OceanJet 商務艙 → 宿霧 Pier 1<span class="en" lang="en">OceanJet Business Class → Cebu Pier 1</span></b><p>候選班次 13:00、14:00。<span class="pending">船票尚未開放<span class="en" lang="en">Not on sale yet</span></span><span class="en" lang="en">Candidate sailings: 13:00, 14:00.</span></p></div></li>
+          <li><time class="soft">傍晚<span class="en" lang="en">Late afternoon</span></time><div><b>Grab 回 Seda Central Bloc<span class="en" lang="en">Grab to Seda Central Bloc</span></b><p>週日傍晚車多，預留時間。<span class="en" lang="en">Sunday evening traffic is heavy; allow extra time.</span></p></div></li>
+          <li><time class="soft">晚上<span class="en" lang="en">Evening</span></time><div><b>IT Park 吃飯、最後採買<span class="en" lang="en">Dinner and last shopping at IT Park</span></b><p>Ayala Malls Central Bloc 就在旁邊。<span class="en" lang="en">Ayala Malls Central Bloc is right next door.</span></p></div></li>
         </ol>
-        <div class="tip"><strong>領隊叮嚀</strong>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
-            <li>飯店接送記得約好時間，至少開船前 1 小時到塔比拉蘭港。</li>
-            <li>今晚把行李整理好，隔天早上直接出發去機場。</li>
+            <li>飯店接送記得約好時間，至少開船前 1 小時到塔比拉蘭港。<span class="en" lang="en">Book the hotel transfer so you reach Tagbilaran port at least 1 hour before sailing.</span></li>
+            <li>今晚把行李整理好，隔天早上直接出發去機場。<span class="en" lang="en">Pack tonight so you can leave straight for the airport tomorrow.</span></li>
           </ul>
         </div>
-        <span class="stay">住宿：Seda Central Bloc Cebu</span>
+        <span class="stay">住宿 Stay：Seda Central Bloc Cebu</span>
       </article>
 
       <article class="day" data-date="2027-01-04" data-spot="cebu">
-        <header><span class="date">1/4</span><span class="dow">週一</span><h3>回台灣</h3></header>
+        <header><span class="date">1/4</span><span class="dow">週一 Mon</span><h3>回台灣<span class="en" lang="en">Fly home to Taiwan</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time class="soft">早上</time><div><b>Grab 到機場</b><p>平日 7–9 點是尖峰，車程可能加倍。上午的班機建議起飛前 3 小時就從飯店出發。</p></div></li>
-          <li><time class="soft">上午</time><div><b>搭星宇航空回桃園</b><p>航班時間以機票為準。<span class="pending">待確認</span></p></div></li>
+          <li><time class="soft">早上<span class="en" lang="en">Early</span></time><div><b>Grab 到機場<span class="en" lang="en">Grab to the airport</span></b><p>平日 7–9 點是尖峰，車程可能加倍。上午的班機建議起飛前 3 小時就從飯店出發。<span class="en" lang="en">Weekday rush hour is 7–9 am and can double the travel time. For a morning flight, leave the hotel 3 hours before departure.</span></p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>搭星宇航空回桃園<span class="en" lang="en">STARLUX to Taoyuan</span></b><p>航班時間以機票為準。<span class="pending">待確認<span class="en" lang="en">To confirm</span></span><span class="en" lang="en">Follow the time on your ticket.</span></p></div></li>
         </ol>
-        <div class="tip"><strong>領隊叮嚀</strong>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
-            <li>剩下的披索可以在機場吃早餐或買伴手禮用掉。</li>
+            <li>剩下的披索可以在機場吃早餐或買伴手禮用掉。<span class="en" lang="en">Spend leftover pesos on breakfast or souvenirs at the airport.</span></li>
           </ul>
         </div>
       </article>
@@ -239,85 +251,102 @@
 
     <!-- 地圖 -->
     <section role="tabpanel" id="p-map" aria-labelledby="t-map" hidden>
-      <h2>地圖</h2>
-      <p class="lead">顏色代表哪一天會去。點名稱可以在地圖上定位，「導航」會用 Google 地圖開啟。標記位置為約略位置。</p>
-      <div id="map" role="img" aria-label="旅程地點地圖"></div>
+      <h2>地圖<span class="en" lang="en">Map</span></h2>
+      <p class="lead">顏色代表哪一天會去。點名稱可以在地圖上定位，「導航」會用 Google 地圖開啟。標記位置為約略位置。<span class="en" lang="en">Colors show the day. Tap a name to find it on the map; "Navigate" opens Google Maps. Pins are approximate.</span></p>
+      <div id="map" role="img" aria-label="旅程地點地圖 Trip locations map"></div>
       <div class="legend" id="legend"></div>
       <ul class="places" id="places"></ul>
     </section>
 
     <!-- 行前準備 -->
     <section role="tabpanel" id="p-prep" aria-labelledby="t-prep" hidden>
-      <h2>行前準備</h2>
-      <div class="card"><h3>出發前 72 小時內</h3><ul><li>兩人各自上 etravel.gov.ph 登錄 eTravel（免費），截圖存好 QR code。</li><li>確認船票、飯店接送、包車都已訂好。</li></ul></div>
-      <div class="card"><h3>證件與文件</h3><ul><li>護照：入境日起效期 6 個月以上。</li><li>回程機票、兩間飯店的訂房確認，入境時可能會被要求出示。</li><li>旅遊平安險與不便險的保單資訊。</li></ul></div>
-      <div class="card"><h3>行李清單</h3><ul><li>夏季衣物、薄外套（冷氣強）、泳衣、拖鞋、好走的鞋。</li><li>防曬乳、帽子、防蚊液、暈船藥、常備藥。</li><li>萬用轉接頭：菲律賓是 220V，A、B、C 型插頭。</li><li>小額披索現金：碼頭稅、三輪車、小費、鄉間景點門票。</li></ul></div>
+      <h2>行前準備<span class="en" lang="en">Before you go</span></h2>
+      <div class="card"><h3>出發前 72 小時內<span class="en" lang="en">Within 72 hours of arrival</span></h3><ul>
+        <li>兩人各自上 etravel.gov.ph 登錄 eTravel（免費），截圖存好 QR code。<span class="en" lang="en">Each traveler registers on etravel.gov.ph (free) and saves the QR code.</span></li>
+        <li>確認船票、飯店接送、包車都已訂好。<span class="en" lang="en">Confirm ferry tickets, hotel transfers and the private van.</span></li></ul></div>
+      <div class="card"><h3>證件與文件<span class="en" lang="en">Documents</span></h3><ul>
+        <li>護照：入境日起效期 6 個月以上。<span class="en" lang="en">Passport valid for at least 6 months from arrival.</span></li>
+        <li>回程機票、兩間飯店的訂房確認，入境時可能會被要求出示。<span class="en" lang="en">Return ticket and both hotel confirmations; immigration may ask for them.</span></li>
+        <li>旅遊平安險與不便險的保單資訊。<span class="en" lang="en">Travel insurance details.</span></li></ul></div>
+      <div class="card"><h3>行李清單<span class="en" lang="en">Packing list</span></h3><ul>
+        <li>夏季衣物、薄外套（冷氣強）、泳衣、拖鞋、好走的鞋。<span class="en" lang="en">Summer clothes, a light jacket for strong air-con, swimwear, sandals, walking shoes.</span></li>
+        <li>防曬乳、帽子、防蚊液、暈船藥、常備藥。<span class="en" lang="en">Sunscreen, hat, insect repellent, seasickness pills, personal medicine.</span></li>
+        <li>萬用轉接頭：菲律賓是 220V，A、B、C 型插頭。<span class="en" lang="en">Travel adapter: 220V, plug types A, B and C.</span></li>
+        <li>小額披索現金：碼頭稅、三輪車、小費、鄉間景點門票。<span class="en" lang="en">Small pesos in cash for terminal fees, tricycles, tips and countryside entry fees.</span></li></ul></div>
     </section>
 
     <!-- 交通 -->
     <section role="tabpanel" id="p-move" aria-labelledby="t-move" hidden>
-      <h2>交通</h2>
-      <div class="card"><span class="where">宿霧</span><h3>Grab 叫車</h3><p>市區移動以 Grab 為主，雨天和尖峰時段會加價。宿霧沒有捷運，BRT 公車目前只有部分路段營運（SRP 到 IT Park）。</p></div>
-      <div class="card"><span class="where">機場 ↔ IT Park</span><h3>約 45–75 分鐘</h3><p>Grab 約 ₱600–900；黃色跳表計程車約 ₱500–700，要確認司機有跳表。</p></div>
-      <div class="card"><span class="where">薄荷島</span><h3>沒有 Grab</h3><p>港口與飯店之間請飯店接送，或事先預約包車。三輪車（tricycle）適合短程，上車前先談好價錢。</p></div>
-      <div class="card"><span class="where">宿霧 ↔ 薄荷島</span><h3>OceanJet 快船</h3><ul><li>宿霧 Pier 1 到塔比拉蘭約 2 小時，每天約 16 班。</li><li>開船前 45–60 分鐘到碼頭，報到截止開船前 30 分鐘。</li><li>碼頭稅用披索現金另外付。</li></ul></div>
+      <h2>交通<span class="en" lang="en">Getting around</span></h2>
+      <div class="card"><span class="where">宿霧 Cebu</span><h3>Grab 叫車<span class="en" lang="en">Grab</span></h3><p>市區移動以 Grab 為主，雨天和尖峰時段會加價。宿霧沒有捷運，BRT 公車目前只有部分路段營運（SRP 到 IT Park）。<span class="en" lang="en">Grab is the main way around the city; fares rise in rain and rush hour. Cebu has no metro; the BRT runs partially between SRP and IT Park.</span></p></div>
+      <div class="card"><span class="where">機場 ↔ IT Park Airport ↔ IT Park</span><h3>約 45–75 分鐘<span class="en" lang="en">About 45–75 minutes</span></h3><p>Grab 約 ₱600–900；黃色跳表計程車約 ₱500–700，要確認司機有跳表。<span class="en" lang="en">Grab ₱600–900; yellow metered taxi ₱500–700. Make sure the meter is on.</span></p></div>
+      <div class="card"><span class="where">薄荷島 Bohol</span><h3>沒有 Grab<span class="en" lang="en">No Grab</span></h3><p>港口與飯店之間請飯店接送，或事先預約包車。三輪車（tricycle）適合短程，上車前先談好價錢。<span class="en" lang="en">Use a hotel transfer or a pre-booked van between the port and the resort. Tricycles are fine for short trips; agree on the price first.</span></p></div>
+      <div class="card"><span class="where">宿霧 ↔ 薄荷島 Cebu ↔ Bohol</span><h3>OceanJet 快船<span class="en" lang="en">OceanJet fast ferry</span></h3><ul>
+        <li>宿霧 Pier 1 到塔比拉蘭約 2 小時，每天約 16 班。<span class="en" lang="en">Cebu Pier 1 to Tagbilaran takes about 2 hours, around 16 sailings a day.</span></li>
+        <li>開船前 45–60 分鐘到碼頭，報到截止開船前 30 分鐘。<span class="en" lang="en">Arrive 45–60 minutes early; check-in closes 30 minutes before departure.</span></li>
+        <li>碼頭稅用披索現金另外付。<span class="en" lang="en">The terminal fee is paid separately in cash.</span></li></ul></div>
     </section>
 
     <!-- 購物 -->
     <section role="tabpanel" id="p-shop" aria-labelledby="t-shop" hidden>
-      <h2>購物</h2>
-      <div class="card"><span class="where">IT Park</span><h3>Ayala Malls Central Bloc</h3><p>就在住宿旁邊，走路就到，吃飯逛街都方便。</p></div>
-      <div class="card"><span class="where">宿霧市區</span><h3>Ayala Center Cebu</h3><p>宿霧老牌大型購物中心，品牌多、餐廳多。</p></div>
-      <div class="card"><span class="where">SRP</span><h3>SM Seaside City Cebu</h3><p>宿霧最大的購物中心之一，搭 Grab 前往。</p></div>
-      <div class="card"><h3>伴手禮</h3><p>芒果乾是最常見的伴手禮，各大超市都買得到。</p></div>
+      <h2>購物<span class="en" lang="en">Shopping</span></h2>
+      <div class="card"><span class="where">IT Park</span><h3>Ayala Malls Central Bloc</h3><p>就在住宿旁邊，走路就到，吃飯逛街都方便。<span class="en" lang="en">Right next to the hotel, an easy walk for meals and shopping.</span></p></div>
+      <div class="card"><span class="where">宿霧市區 Cebu City</span><h3>Ayala Center Cebu</h3><p>宿霧老牌大型購物中心，品牌多、餐廳多。<span class="en" lang="en">Cebu's long-established big mall with many brands and restaurants.</span></p></div>
+      <div class="card"><span class="where">SRP</span><h3>SM Seaside City Cebu</h3><p>宿霧最大的購物中心之一，搭 Grab 前往。<span class="en" lang="en">One of Cebu's largest malls; take a Grab.</span></p></div>
+      <div class="card"><h3>伴手禮<span class="en" lang="en">Souvenirs</span></h3><p>芒果乾是最常見的伴手禮，各大超市都買得到。<span class="en" lang="en">Dried mangoes are the classic gift and are sold in every supermarket.</span></p></div>
     </section>
 
     <!-- 餐廳 -->
     <section role="tabpanel" id="p-eat" aria-labelledby="t-eat" hidden>
-      <h2>餐廳</h2>
-      <div class="card"><span class="where">宿霧</span><h3>烤乳豬 lechon</h3><p>宿霧的招牌菜，皮脆肉香。Rico's Lechon、Zubuchon 都是當地常見的名店。</p></div>
-      <div class="card"><span class="where">邦勞島</span><h3>Bohol Bee Farm</h3><p>邦勞島上的有機農場餐廳，冰淇淋和麵包很有名。</p></div>
-      <div class="card"><span class="where">薄荷島</span><h3>羅柏河竹筏午餐</h3><p>坐在竹筏上沿河吃自助午餐，是一日遊的固定行程。</p></div>
-      <div class="card"><h3>用餐提醒</h3><ul><li>不生飲自來水，喝瓶裝水。</li><li>帳單常已含服務費，沒含的話可以留約一成小費。</li></ul></div>
+      <h2>餐廳<span class="en" lang="en">Food</span></h2>
+      <div class="card"><span class="where">宿霧 Cebu</span><h3>烤乳豬 lechon<span class="en" lang="en">Lechon (roast pig)</span></h3><p>宿霧的招牌菜，皮脆肉香。Rico's Lechon、Zubuchon 都是當地常見的名店。<span class="en" lang="en">Cebu's signature dish with crispy skin. Rico's Lechon and Zubuchon are well-known local spots.</span></p></div>
+      <div class="card"><span class="where">邦勞島 Panglao</span><h3>Bohol Bee Farm</h3><p>邦勞島上的有機農場餐廳，冰淇淋和麵包很有名。<span class="en" lang="en">An organic farm restaurant on Panglao, known for its ice cream and bread.</span></p></div>
+      <div class="card"><span class="where">薄荷島 Bohol</span><h3>羅柏河竹筏午餐<span class="en" lang="en">Loboc River cruise lunch</span></h3><p>坐在竹筏上沿河吃自助午餐，是一日遊的固定行程。<span class="en" lang="en">A buffet lunch on a floating raft, a standard stop on the countryside tour.</span></p></div>
+      <div class="card"><h3>用餐提醒<span class="en" lang="en">Dining tips</span></h3><ul>
+        <li>不生飲自來水，喝瓶裝水。<span class="en" lang="en">Don't drink tap water; drink bottled water.</span></li>
+        <li>帳單常已含服務費，沒含的話可以留約一成小費。<span class="en" lang="en">Bills often include a service charge; if not, a tip of about 10% is appreciated.</span></li></ul></div>
     </section>
 
     <!-- 景點 -->
     <section role="tabpanel" id="p-see" aria-labelledby="t-see" hidden>
-      <h2>景點</h2>
-      <div class="card"><span class="where">薄荷島</span><h3>巧克力山</h3><p>上千座圓錐形小山，乾季草色轉褐，看起來像一顆顆巧克力。</p></div>
-      <div class="card"><span class="where">薄荷島</span><h3>眼鏡猴保護區</h3><p>世界最小的靈長類之一。白天在睡覺，請保持安靜、不用閃光燈。</p></div>
-      <div class="card"><span class="where">邦勞島</span><h3>Alona Beach</h3><p>從飯店走路就到的白沙灘，傍晚看夕陽。</p></div>
-      <div class="card"><span class="where">宿霧</span><h3>聖嬰大教堂、麥哲倫十字架</h3><p>宿霧最有代表性的歷史景點，兩處就在隔壁。</p></div>
+      <h2>景點<span class="en" lang="en">Sights</span></h2>
+      <div class="card"><span class="where">薄荷島 Bohol</span><h3>巧克力山<span class="en" lang="en">Chocolate Hills</span></h3><p>上千座圓錐形小山，乾季草色轉褐，看起來像一顆顆巧克力。<span class="en" lang="en">Over a thousand cone-shaped hills that turn brown in the dry season, like rows of chocolate drops.</span></p></div>
+      <div class="card"><span class="where">薄荷島 Bohol</span><h3>眼鏡猴保護區<span class="en" lang="en">Tarsier Sanctuary</span></h3><p>世界最小的靈長類之一。白天在睡覺，請保持安靜、不用閃光燈。<span class="en" lang="en">One of the world's smallest primates. They sleep by day, so keep quiet and don't use flash.</span></p></div>
+      <div class="card"><span class="where">邦勞島 Panglao</span><h3>Alona Beach</h3><p>從飯店走路就到的白沙灘，傍晚看夕陽。<span class="en" lang="en">A white-sand beach a short walk from the resort; best at sunset.</span></p></div>
+      <div class="card"><span class="where">宿霧 Cebu</span><h3>聖嬰大教堂、麥哲倫十字架<span class="en" lang="en">Basilica del Santo Niño, Magellan's Cross</span></h3><p>宿霧最有代表性的歷史景點，兩處就在隔壁。<span class="en" lang="en">Cebu's best-known historic sites, right next to each other.</span></p></div>
     </section>
 
     <!-- 有趣的事 -->
     <section role="tabpanel" id="p-fun" aria-labelledby="t-fun" hidden>
-      <h2>有趣的事</h2>
-      <div class="card"><h3>Sinulog 祭典</h3><p>宿霧每年 1 月第三個星期日舉辦大遊行，跨年夜常常一起辦開幕煙火。</p></div>
-      <div class="card"><h3>吉普尼 jeepney</h3><p>彩繪得很誇張的改裝吉普車，是菲律賓最常見的大眾交通。</p></div>
-      <div class="card"><h3>宿霧是菲律賓最古老的城市</h3><p>1521 年麥哲倫在這裡登陸，市區還留著西班牙時期的建築。</p></div>
+      <h2>有趣的事<span class="en" lang="en">Fun facts</span></h2>
+      <div class="card"><h3>Sinulog 祭典<span class="en" lang="en">Sinulog Festival</span></h3><p>宿霧每年 1 月第三個星期日舉辦大遊行，跨年夜常常一起辦開幕煙火。<span class="en" lang="en">Cebu's grand parade is held on the third Sunday of January; the New Year's Eve fireworks often double as its opening.</span></p></div>
+      <div class="card"><h3>吉普尼 jeepney<span class="en" lang="en">Jeepneys</span></h3><p>彩繪得很誇張的改裝吉普車，是菲律賓最常見的大眾交通。<span class="en" lang="en">Brightly painted converted jeeps, the most common public transport in the Philippines.</span></p></div>
+      <div class="card"><h3>宿霧是菲律賓最古老的城市<span class="en" lang="en">The oldest city in the Philippines</span></h3><p>1521 年麥哲倫在這裡登陸，市區還留著西班牙時期的建築。<span class="en" lang="en">Magellan landed here in 1521, and Spanish-era buildings still stand in the city.</span></p></div>
     </section>
 
     <!-- 實用資訊 -->
     <section role="tabpanel" id="p-info" aria-labelledby="t-info" hidden>
-      <h2>實用資訊</h2>
+      <h2>實用資訊<span class="en" lang="en">Essentials</span></h2>
       <div class="card">
         <dl class="facts">
-          <dt>簽證</dt><dd>台灣護照免簽 14 天，護照效期需 6 個月以上</dd>
-          <dt>eTravel</dt><dd>抵達前 72 小時內上網登錄，免費：etravel.gov.ph</dd>
-          <dt>時差</dt><dd>和台灣相同</dd>
-          <dt>天氣</dt><dd>12–1 月是東北季風期，氣溫約 25–30°C，偶有陣雨</dd>
-          <dt>貨幣</dt><dd>菲律賓披索（PHP），小店與鄉間多半只收現金</dd>
-          <dt>電壓插頭</dt><dd>220V，A、B、C 型插頭</dd>
-          <dt>當地緊急電話</dt><dd class="num">911</dd>
-          <dt>外交部急難救助</dt><dd>0800-085-095（國內撥打）</dd>
+          <dt>簽證<span class="en" lang="en">Visa</span></dt><dd>台灣護照免簽 14 天，護照效期需 6 個月以上<span class="en" lang="en">Visa-free for 14 days with a Taiwan passport; passport valid 6+ months</span></dd>
+          <dt>eTravel</dt><dd>抵達前 72 小時內上網登錄，免費：etravel.gov.ph<span class="en" lang="en">Register online within 72 hours of arrival, free: etravel.gov.ph</span></dd>
+          <dt>時差<span class="en" lang="en">Time</span></dt><dd>和台灣相同<span class="en" lang="en">Same as Taiwan</span></dd>
+          <dt>天氣<span class="en" lang="en">Weather</span></dt><dd>12–1 月是東北季風期，氣溫約 25–30°C，偶有陣雨<span class="en" lang="en">Northeast monsoon season, about 25–30°C with occasional showers</span></dd>
+          <dt>貨幣<span class="en" lang="en">Currency</span></dt><dd>菲律賓披索（PHP），小店與鄉間多半只收現金<span class="en" lang="en">Philippine peso (PHP); small shops and rural areas are mostly cash only</span></dd>
+          <dt>電壓插頭<span class="en" lang="en">Power</span></dt><dd>220V，A、B、C 型插頭<span class="en" lang="en">220V, plug types A, B, C</span></dd>
+          <dt>當地緊急電話<span class="en" lang="en">Emergency</span></dt><dd class="num">911</dd>
+          <dt>外交部急難救助<span class="en" lang="en">Taiwan MOFA hotline</span></dt><dd>0800-085-095（國內撥打）<span class="en" lang="en">Dial from within Taiwan</span></dd>
         </dl>
       </div>
-      <div class="card"><h3>安全</h3><ul><li>人多的地方注意手機和錢包，背包背在前面。</li><li>晚上移動用 Grab，不搭來路不明的車。</li></ul></div>
+      <div class="card"><h3>安全<span class="en" lang="en">Safety</span></h3><ul>
+        <li>人多的地方注意手機和錢包，背包背在前面。<span class="en" lang="en">Watch your phone and wallet in crowds; wear your backpack in front.</span></li>
+        <li>晚上移動用 Grab，不搭來路不明的車。<span class="en" lang="en">Use Grab at night and avoid unmarked cars.</span></li></ul></div>
     </section>
 
     <footer>
-      最後更新：2026/10/7。行程由旅遊規劃師整理，價格為參考值，出發前請再確認營業時間與交通資訊。天氣與海況來自 Open-Meteo，匯率來自 ExchangeRate-API。
+      最後更新：2026/10/7。行程由旅遊規劃師整理，價格為參考值，出發前請再確認營業時間與交通資訊。天氣與海況來自 Open-Meteo，匯率來自 ExchangeRate-API，地圖來自 OpenStreetMap。
+      <span class="en" lang="en">Last updated 7 Oct 2026. Prices are for reference; check opening hours and transport before you go. Weather and sea data: Open-Meteo. Exchange rate: ExchangeRate-API. Map: OpenStreetMap.</span>
     </footer>
   </main>
 
@@ -327,16 +356,15 @@
     const start = new Date("2026-12-31T00:00:00+08:00"), end = new Date("2027-01-05T00:00:00+08:00"), now = new Date();
     const d = Math.ceil((start - now) / 86400000);
     const num = document.getElementById("days"), lab = document.getElementById("days-label");
-    if (d > 0) { num.textContent = d; lab.textContent = "天後出發"; }
-    else if (now < end) { num.textContent = "GO"; lab.textContent = "旅途中"; }
-    else { num.textContent = "✓"; lab.textContent = "已回國"; }
+    if (d > 0) { num.textContent = d; }
+    else if (now < end) { num.textContent = "GO"; lab.innerHTML = "旅途中<br>on the trip"; }
+    else { num.textContent = "✓"; lab.innerHTML = "已回國<br>back home"; }
   })();
 
-  const wxText = c => c === 0 ? "晴" : c <= 3 ? "多雲" : c <= 48 ? "有霧" : c <= 67 ? "雨" : c <= 82 ? "陣雨" : "雷雨";
+  const wxText = c => c === 0 ? "晴 Clear" : c <= 3 ? "多雲 Cloudy" : c <= 48 ? "有霧 Fog" : c <= 67 ? "雨 Rain" : c <= 82 ? "陣雨 Showers" : "雷雨 Thunderstorm";
   const spots = { cebu: [10.3157, 123.8854], panglao: [9.5794, 123.7444] };
   const hm = s => s ? s.slice(11, 16) : "";
 
-  // current weather + daily forecast for trip days
   for (const [key, [lat, lon]] of Object.entries(spots)) {
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunset&forecast_days=16&timezone=Asia%2FManila`)
       .then(r => r.json())
@@ -347,16 +375,15 @@
           const card = document.querySelector(`.day[data-date="${date}"][data-spot="${key}"]`);
           if (!card) return;
           const box = card.querySelector(".wx");
-          box.textContent = `天氣預報：${wxText(d.daily.weather_code[i])}，${Math.round(d.daily.temperature_2m_min[i])}–${Math.round(d.daily.temperature_2m_max[i])}°C，降雨機率 ${d.daily.precipitation_probability_max[i] ?? "—"}%`;
+          box.textContent = `天氣預報 Forecast：${wxText(d.daily.weather_code[i])}，${Math.round(d.daily.temperature_2m_min[i])}–${Math.round(d.daily.temperature_2m_max[i])}°C，降雨機率 Rain ${d.daily.precipitation_probability_max[i] ?? "—"}%`;
           box.classList.add("on");
           const ss = card.querySelector(".sunset");
-          if (ss) ss.textContent = `今天日落 ${hm(d.daily.sunset[i])}。`;
+          if (ss) ss.textContent = `今天日落 Sunset ${hm(d.daily.sunset[i])}。`;
         });
       })
       .catch(() => { document.querySelector(`[data-wx="${key}"]`).textContent = "—"; });
   }
 
-  // sea state in Bohol Strait (current + boat days)
   fetch("https://marine-api.open-meteo.com/v1/marine?latitude=9.95&longitude=123.75&current=wave_height&daily=wave_height_max&forecast_days=16&timezone=Asia%2FManila")
     .then(r => r.json())
     .then(d => {
@@ -366,39 +393,38 @@
         const card = document.querySelector(`.day[data-sea][data-date="${date}"]`);
         if (!card || d.daily.wave_height_max[i] == null) return;
         const box = card.querySelector(".wx");
-        box.textContent += (box.textContent ? "；" : "") + `海浪最高 ${d.daily.wave_height_max[i].toFixed(1)} 公尺`;
+        box.textContent += (box.textContent ? "；" : "") + `海浪最高 Max waves ${d.daily.wave_height_max[i].toFixed(1)} m`;
         box.classList.add("on");
       });
     })
     .catch(() => { document.getElementById("wave").textContent = "—"; });
 
-  // exchange rate
   fetch("https://open.er-api.com/v6/latest/PHP")
     .then(r => r.json())
     .then(d => {
       const r = d.rates.TWD;
       document.getElementById("fx").textContent = r.toFixed(3);
-      document.getElementById("fx2").textContent = "1,000 元約 " + Math.round(1000 / r).toLocaleString() + " 披索";
+      document.getElementById("fx2").textContent = "NT$1,000 ≈ ₱" + Math.round(1000 / r).toLocaleString();
     })
     .catch(() => { document.getElementById("fx").textContent = "—"; });
 
   // map (Leaflet + OpenStreetMap, free)
   const dayColors = { "12/31": "#E2725B", "1/1": "#F2C14E", "1/2": "#2E9E6B", "1/3": "#0E4D64", "1/4": "#7A6FB0" };
   const places = [
-    ["麥克坦－宿霧國際機場", "12/31、1/4", "12/31", 10.3075, 123.9794, "Mactan-Cebu International Airport"],
-    ["Seda Central Bloc Cebu", "12/31、1/3 住宿", "12/31", 10.3297, 123.9055, "Seda Central Bloc Cebu"],
-    ["Ayala Malls Central Bloc", "飯店旁的商場", "12/31", 10.3303, 123.9061, "Ayala Malls Central Bloc"],
-    ["宿霧 Pier 1（OceanJet）", "1/1 出發、1/3 抵達", "1/1", 10.2943, 123.9066, "OceanJet Cebu Pier 1"],
-    ["塔比拉蘭港", "1/1 抵達、1/3 出發", "1/1", 9.6455, 123.8527, "Tagbilaran City Tourist Port"],
-    ["Henann Tawala Resort", "1/1、1/2 住宿", "1/1", 9.5497, 123.7765, "Henann Tawala Resort Panglao"],
-    ["Alona Beach", "看夕陽", "1/1", 9.5502, 123.7743, "Alona Beach Panglao"],
-    ["巧克力山", "1/2 一日遊", "1/2", 9.8297, 124.1398, "Chocolate Hills Complex Carmen Bohol"],
-    ["眼鏡猴保護區", "1/2 一日遊", "1/2", 9.6878, 123.9540, "Philippine Tarsier Sanctuary Corella"],
-    ["羅柏河竹筏午餐", "1/2 一日遊", "1/2", 9.6383, 124.0325, "Loboc River Cruise"],
-    ["Baclayon 教堂", "1/2 一日遊", "1/2", 9.6230, 123.9119, "Baclayon Church"],
-    ["Bohol Bee Farm", "雨天備案", "1/2", 9.5867, 123.8044, "Bohol Bee Farm"],
-    ["SM Seaside City Cebu", "購物", "1/3", 10.2817, 123.8806, "SM Seaside City Cebu"],
-    ["聖嬰大教堂", "景點", "1/3", 10.2943, 123.9020, "Basilica Minore del Santo Nino Cebu"]
+    ["麥克坦－宿霧國際機場", "Mactan-Cebu International Airport", "12/31、1/4", "12/31", 10.3075, 123.9794, "Mactan-Cebu International Airport"],
+    ["Seda Central Bloc Cebu", "Hotel", "12/31、1/3 住宿 Stay", "12/31", 10.3297, 123.9055, "Seda Central Bloc Cebu"],
+    ["Ayala Malls Central Bloc", "Mall next to the hotel", "飯店旁的商場", "12/31", 10.3303, 123.9061, "Ayala Malls Central Bloc"],
+    ["宿霧 Pier 1（OceanJet）", "Cebu Pier 1", "1/1 出發、1/3 抵達", "1/1", 10.2943, 123.9066, "OceanJet Cebu Pier 1"],
+    ["塔比拉蘭港", "Tagbilaran Port", "1/1 抵達、1/3 出發", "1/1", 9.6455, 123.8527, "Tagbilaran City Tourist Port"],
+    ["Henann Tawala Resort", "Resort", "1/1、1/2 住宿 Stay", "1/1", 9.5497, 123.7765, "Henann Tawala Resort Panglao"],
+    ["Alona Beach", "Sunset spot", "看夕陽", "1/1", 9.5502, 123.7743, "Alona Beach Panglao"],
+    ["巧克力山", "Chocolate Hills", "1/2 一日遊 Day tour", "1/2", 9.8297, 124.1398, "Chocolate Hills Complex Carmen Bohol"],
+    ["眼鏡猴保護區", "Tarsier Sanctuary", "1/2 一日遊 Day tour", "1/2", 9.6878, 123.9540, "Philippine Tarsier Sanctuary Corella"],
+    ["羅柏河竹筏午餐", "Loboc River cruise", "1/2 一日遊 Day tour", "1/2", 9.6383, 124.0325, "Loboc River Cruise"],
+    ["Baclayon 教堂", "Baclayon Church", "1/2 一日遊 Day tour", "1/2", 9.6230, 123.9119, "Baclayon Church"],
+    ["Bohol Bee Farm", "Farm restaurant", "雨天備案 Rain plan", "1/2", 9.5867, 123.8044, "Bohol Bee Farm"],
+    ["SM Seaside City Cebu", "Mall", "購物 Shopping", "1/3", 10.2817, 123.8806, "SM Seaside City Cebu"],
+    ["聖嬰大教堂", "Basilica del Santo Niño", "景點 Sight", "1/3", 10.2943, 123.9020, "Basilica Minore del Santo Nino Cebu"]
   ];
   let map, markers = [];
   function initMap() {
@@ -406,13 +432,13 @@
     map = L.map("map", { scrollWheelZoom: false });
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
     const list = document.getElementById("places");
-    places.forEach(([name, note, day, lat, lon, q], i) => {
+    places.forEach(([name, en, note, day, lat, lon, q]) => {
       const m = L.circleMarker([lat, lon], { radius: 9, color: "#fff", weight: 2, fillColor: dayColors[day], fillOpacity: 1 })
-        .addTo(map).bindPopup(`<b>${name}</b><br>${note}`);
+        .addTo(map).bindPopup(`<b>${name}</b><br>${en}<br>${note}`);
       markers.push(m);
       const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
       const li = document.createElement("li");
-      li.innerHTML = `<button type="button"><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${dayColors[day]};margin-right:8px"></i>${name}<small>${note}</small></button><a href="${url}" target="_blank" rel="noopener">導航</a>`;
+      li.innerHTML = `<button type="button"><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${dayColors[day]};margin-right:8px"></i>${name}<small>${en}・${note}</small></button><a href="${url}" target="_blank" rel="noopener">導航<br>Navigate</a>`;
       li.querySelector("button").addEventListener("click", () => { map.setView([lat, lon], 14); m.openPopup(); document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" }); });
       list.appendChild(li);
     });

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>旅遊規劃</title>
+<title>旅遊規劃 Travel Plans</title>
 <meta name="description" content="旅程、行前資訊與當地即時天氣匯率">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,27 +32,33 @@
     display: grid; place-content: center; text-align: center; transform: rotate(-10deg); color: var(--sea); line-height: 1.1;
   }
   .trip .pm b { font: 600 30px/1 "Barlow Condensed", sans-serif; display: block; }
-  .trip .pm small { font-size: 12px; color: var(--muted); }
+  .trip .pm small { font-size: 10px; line-height: 1.2; color: var(--muted); display: block; margin-top: 2px; }
   .trip .go { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--sea); border-bottom: 2px solid var(--mango); }
   footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+  .en { display: block; font-size: .82em; line-height: 1.45; font-weight: 400; color: var(--muted); }
+  .top .en { color: rgba(247,243,232,.75); }
+  .top h1 .en { font-size: .36em; font-weight: 500; color: var(--mango); margin-top: 4px; }
+  .trip .kicker .en { display: inline; margin-left: 6px; color: var(--coral); }
+  .trip h2 .en { font-size: .55em; }
+  .trip .go .en { display: inline; margin-left: 6px; color: var(--sea); }
 </style>
 </head>
 <body>
   <header class="top">
     <div class="wrap">
-      <h1>旅遊規劃</h1>
-      <p>每一趟旅程的行程、交通、當地天氣與匯率。</p>
+      <h1>旅遊規劃<span class="en" lang="en">Travel Plans</span></h1>
+      <p>每一趟旅程的行程、交通、當地天氣與匯率。<span class="en" lang="en">Itineraries, transport, local weather and exchange rates for every trip.</span></p>
     </div>
   </header>
   <main class="wrap">
     <a class="trip" href="trips/2026-cebu-bohol/">
-      <span class="kicker">跨年之旅・規劃中</span>
-      <h2>宿霧・薄荷島</h2>
-      <p>2026/12/31 – 2027/1/4，5 天 4 夜</p>
-      <span class="pm" aria-hidden="true"><b id="days">--</b><small>天後出發</small></span>
-      <span class="go">查看行程</span>
+      <span class="kicker">跨年之旅・規劃中<span class="en" lang="en">New Year Trip · Planning</span></span>
+      <h2>宿霧・薄荷島<span class="en" lang="en">Cebu & Bohol</span></h2>
+      <p>2026/12/31 – 2027/1/4，5 天 4 夜<span class="en" lang="en">5 days, 4 nights</span></p>
+      <span class="pm" aria-hidden="true"><b id="days">--</b><small>天後出發<br>days to go</small></span>
+      <span class="go">查看行程<span class="en" lang="en">View trip</span></span>
     </a>
-    <footer>行程由旅遊規劃師整理。出發前請再確認營業時間與交通資訊。</footer>
+    <footer>行程由旅遊規劃師整理。出發前請再確認營業時間與交通資訊。<span class="en" lang="en">Prepared by the trip planner. Check opening hours and transport before you go.</span></footer>
   </main>
 <script>
   const d = Math.ceil((new Date("2026-12-31T00:00:00+08:00") - new Date()) / 86400000);
