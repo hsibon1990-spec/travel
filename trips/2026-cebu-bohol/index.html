@@ -105,6 +105,51 @@
   .places a { flex: none; font-size: 13px; color: var(--sea); text-align: center; }
   .leaflet-popup-content { font: 400 14px/1.5 var(--sans); }
 
+  /* place buttons */
+  .group h4, .related h4 { margin: 14px 0 0; font-size: 15px; color: var(--sea); }
+  .group h4 .en, .related h4 .en { display: inline; margin-left: 6px; font-size: 12px; }
+  .picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; margin-top: 8px; }
+  .pick { --c: var(--sea); display: grid; grid-template-columns: 1fr auto; gap: 1px 10px; align-items: start; width: 100%; text-align: left;
+    background: #fff; color: var(--ink); border: 0; border-left: 4px solid var(--c); border-radius: 10px; padding: 9px 10px 9px 12px;
+    font: inherit; cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); }
+  .day .pick { background: var(--page); box-shadow: none; }
+  .pick:hover { box-shadow: inset 0 0 0 2px var(--c); }
+  .pick b { font-size: 15px; line-height: 1.35; }
+  .pick .d { grid-column: 1; font-size: 13.5px; line-height: 1.4; }
+  .pick .d .en { font-size: 12px; }
+  .pick .km { grid-column: 2; grid-row: 1 / span 2; font: 600 17px/1.2 var(--num); color: var(--sea); white-space: nowrap; }
+  .pick[data-cat="food"] { --c: var(--mango); }
+  .pick[data-cat="spa"] { --c: #2E9E6B; }
+  .pick[data-cat="sight"] { --c: var(--coral); }
+  .pick[data-cat="mall"] { --c: var(--sea); }
+  .day.flex { background: var(--sand); border: 2px dashed var(--coral); }
+  .day.flex .pick { background: #fff; }
+  .related { margin-top: 12px; }
+  .day { scroll-margin-top: 84px; }
+  a.jump { color: var(--sea); font-weight: 700; }
+
+  /* place info sheet */
+  .sheet { border: 0; padding: 0; width: min(560px, 100%); max-width: 100%; max-height: 88vh; margin: auto auto 0;
+    border-radius: 18px 18px 0 0; border-top: 6px solid var(--mango); background: var(--sand); color: var(--ink); }
+  .sheet::backdrop { background: rgba(10, 61, 80, .5); }
+  @media (min-width: 640px) { .sheet { margin: auto; border-radius: 18px; } }
+  @media (prefers-reduced-motion: no-preference) { .sheet[open] { animation: sheet-up .2s ease-out; } }
+  @keyframes sheet-up { from { transform: translateY(24px); opacity: 0; } }
+  .sheet-in { position: relative; padding: 16px 18px 22px; }
+  .sheet .x { position: absolute; right: 12px; top: 10px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #fff; color: var(--sea); font-size: 24px; line-height: 1; cursor: pointer; }
+  .sheet-area { margin: 0; font-size: 13px; font-weight: 700; color: var(--coral); }
+  .sheet-area .en { display: inline; margin-left: 6px; color: var(--coral); }
+  .sheet h2 { margin: 2px 48px 10px 0; font-size: 24px; color: var(--sea); }
+  .sheet-about { margin: 0 0 12px; }
+  .sheet .facts { background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+  .sheet .facts a { color: var(--sea); font-weight: 700; }
+  .sheet .tip p { margin: 0; font-size: 14.5px; }
+  .sheet-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .btn { flex: 1 1 180px; text-align: center; text-decoration: none; border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer;
+    font: 700 15px/1.3 var(--sans); background: var(--sea); color: var(--sand); }
+  .btn .en { color: inherit; opacity: .8; }
+  .btn.ghost { background: #fff; color: var(--sea); box-shadow: inset 0 0 0 2px var(--sea); }
+
   footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
 
   @media (max-width: 560px) {
@@ -142,7 +187,7 @@
       <button role="tab" id="t-prep" aria-controls="p-prep" aria-selected="false" tabindex="-1">行前準備<span class="en" lang="en">Before you go</span></button>
       <button role="tab" id="t-move" aria-controls="p-move" aria-selected="false" tabindex="-1">交通<span class="en" lang="en">Getting around</span></button>
       <button role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">購物<span class="en" lang="en">Shopping</span></button>
-      <button role="tab" id="t-eat" aria-controls="p-eat" aria-selected="false" tabindex="-1">餐廳<span class="en" lang="en">Food</span></button>
+      <button role="tab" id="t-eat" aria-controls="p-eat" aria-selected="false" tabindex="-1">餐廳按摩<span class="en" lang="en">Food & spa</span></button>
       <button role="tab" id="t-see" aria-controls="p-see" aria-selected="false" tabindex="-1">景點<span class="en" lang="en">Sights</span></button>
       <button role="tab" id="t-fun" aria-controls="p-fun" aria-selected="false" tabindex="-1">有趣的事<span class="en" lang="en">Fun facts</span></button>
       <button role="tab" id="t-info" aria-controls="p-info" aria-selected="false" tabindex="-1">實用資訊<span class="en" lang="en">Essentials</span></button>
@@ -175,6 +220,7 @@
             <li>睡前先把隔天搭船的行李整理好。<span class="en" lang="en">Pack for the next day's ferry before bed.</span></li>
           </ul>
         </div>
+        <div class="related"><h4>這天的地點<span class="en" lang="en">Places for the day</span></h4><div class="picks" data-ids="lechon,plaza"></div></div>
         <span class="stay">住宿 Stay：Seda Central Bloc Cebu</span>
       </article>
 
@@ -186,32 +232,31 @@
           <li><time class="soft">開船前<span class="en" lang="en">Before sailing</span></time><div><b>碼頭報到<span class="en" lang="en">Check in at the pier</span></b><p>開船前 45–60 分鐘到，報到截止是開船前 30 分鐘。碼頭稅要另外用披索現金付。<span class="en" lang="en">Arrive 45–60 min early; check-in closes 30 min before departure. The terminal fee is paid separately in pesos, cash only.</span></p></div></li>
           <li><time>11:40</time><div><b>OceanJet 商務艙 → 塔比拉蘭<span class="en" lang="en">OceanJet Business Class → Tagbilaran</span></b><p>航程約 2 小時，候選班次 11:40、13:00、14:00。<span class="pending">船票尚未開放<span class="en" lang="en">Not on sale yet</span></span><span class="en" lang="en">About 2 hours. Candidate sailings: 11:40, 13:00, 14:00.</span></p></div></li>
           <li><time class="soft">下午<span class="en" lang="en">Afternoon</span></time><div><b>港口接送到邦勞島<span class="en" lang="en">Transfer to Panglao</span></b><p>車程 30–45 分鐘。薄荷島沒有 Grab，請飯店接送或預約包車。<span class="en" lang="en">30–45 min. There is no Grab on Bohol, so book a hotel transfer or private van.</span></p></div></li>
-          <li><time class="soft">順路<span class="en" lang="en">On the way</span></time><div><b>Common Crew 咖啡（可選）<span class="en" lang="en">Common Crew Coffee (optional)</span></b><p>自家烘焙的咖啡館，就在港口往飯店的路上，離飯店約 2 公里。營業 10:00–18:00，週三公休。包車的話先跟司機說要停。<span class="pending">元旦是否營業待確認<span class="en" lang="en">New Year's Day hours to confirm</span></span><span class="en" lang="en">A specialty roaster on the road from the port, about 2 km before the resort. Open 10:00–18:00, closed Wednesdays. Tell the driver in advance if you want to stop.</span></p></div></li>
+          <li><time class="soft">順路<span class="en" lang="en">On the way</span></time><div><b>想喝咖啡可以停 Common Crew<span class="en" lang="en">Optional coffee stop at Common Crew</span></b><p>就在港口往飯店的路上，詳情在<a class="jump" href="#picks">彈性清單</a>。<span class="en" lang="en">It's on the road from the port. Details in the <a class="jump" href="#picks">flexible list</a>.</span></p></div></li>
           <li><time>15:00</time><div><b>Henann Tawala Resort 入住<span class="en" lang="en">Check in at Henann Tawala Resort</span></b><p>15:00 起可入住。入住時要付押金，每晚 ₱3,000。<span class="en" lang="en">Check-in from 15:00. A deposit of ₱3,000 per night is required.</span></p></div></li>
           <li><time class="soft">傍晚<span class="en" lang="en">Sunset</span></time><div><b>Alona Beach 看夕陽<span class="en" lang="en">Sunset at Alona Beach</span></b><p>從飯店走路約 2 分鐘。<span class="sunset"></span><span class="en" lang="en">About a 2-minute walk from the resort.</span></p></div></li>
-          <li><time class="soft">晚上<span class="en" lang="en">Dinner</span></time><div><b>Alona 一帶晚餐（步行 5–10 分鐘）<span class="en" lang="en">Dinner around Alona (5–10 min walk)</span></b><p>海鮮：Jumbo Crab Bohol、No.1 Seafood Restaurant；披薩：A Tavola、Toto e Peppino；平價烤雞：The Original Paeng's。飯後到 Mocobay 吃冰淇淋或芒果冰沙。<span class="en" lang="en">Seafood: Jumbo Crab Bohol or No.1 Seafood Restaurant. Pizza: A Tavola or Toto e Peppino. Budget grilled chicken: The Original Paeng's. Gelato or mango shake at Mocobay afterwards.</span></p></div></li>
+          <li><time class="soft">晚上<span class="en" lang="en">Evening</span></time><div><b>自由安排<span class="en" lang="en">Free evening</span></b><p>晚餐、甜點、按摩都還沒排定，當天從<a class="jump" href="#picks">彈性清單</a>挑。走路 10 分鐘內就有很多選擇。<span class="en" lang="en">Dinner, dessert and massage are open. Pick on the day from the <a class="jump" href="#picks">flexible list</a>; plenty is within a 10-minute walk.</span></p></div></li>
         </ol>
         <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
             <li>商務艙每人可免費託運 20 公斤，手提限 10 公斤、25×35×40 公分；有輪子的行李箱一律要託運。<span class="en" lang="en">Business Class allows 20 kg checked per person; carry-on up to 10 kg and 25×35×40 cm. Wheeled suitcases must be checked.</span></li>
             <li>容易暈船的話，上船前 30 分鐘吃暈船藥。<span class="en" lang="en">If you get seasick, take medication 30 minutes before boarding.</span></li>
             <li>颱風或強風警報時船班可能停駛，出發前一天先看海況和 OceanJet 公告。<span class="en" lang="en">Sailings may be cancelled during storm warnings. Check sea conditions and OceanJet notices the day before.</span></li>
-            <li>元旦假期人多，海鮮餐廳先訂位；螃蟹和海鮮多半秤重計價，點餐前先問清楚價錢。<span class="en" lang="en">It's a holiday, so book the seafood restaurants. Crab and seafood are usually priced by weight; ask before you order.</span></li>
+            <li>元旦很多店家營業時間會調整，決定好要去哪間就先打電話確認或訂位。<span class="en" lang="en">Many places change their hours on New Year's Day. Once you pick one, call ahead to check or book.</span></li>
           </ul>
         </div>
         <span class="stay">住宿 Stay：Henann Tawala Resort</span>
       </article>
 
       <article class="day" data-date="2027-01-02" data-spot="panglao">
-        <header><span class="date">1/2</span><span class="dow">週六 Sat</span><h3>包車半日遊：巧克力山、眼鏡猴，下午按摩<span class="en" lang="en">Private van: Chocolate Hills and tarsiers, massage in the afternoon</span></h3></header>
+        <header><span class="date">1/2</span><span class="dow">週六 Sat</span><h3>包車：巧克力山、眼鏡猴，下午自由<span class="en" lang="en">Private van: Chocolate Hills and tarsiers, free afternoon</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
           <li><time>07:30</time><div><b>包車從飯店出發<span class="en" lang="en">Private van from the resort</span></b><p>私人包車約每車 ₱2,500–4,000，依時數計價。12–2 月是旺季，提前 2–3 週預約。<span class="pending">待預約<span class="en" lang="en">To book</span></span><span class="en" lang="en">About ₱2,500–4,000 per van, depending on hours. December to February is peak season; book 2–3 weeks ahead.</span></p></div></li>
           <li><time>09:30</time><div><b>巧克力山<span class="en" lang="en">Chocolate Hills</span></b><p>先去最遠的點，車程約 2 小時。門票 ₱100，觀景台要爬 200 多階，停留約 1 小時。早上人少、光線好。<span class="en" lang="en">Go to the farthest stop first, about 2 hours' drive. Entry ₱100; the viewing deck is up 200-plus steps. Allow about an hour. Fewer crowds and better light in the morning.</span></p></div></li>
           <li><time>11:30</time><div><b>菲律賓眼鏡猴保護區（Corella）<span class="en" lang="en">Philippine Tarsier Sanctuary (Corella)</span></b><p>回程順路，車程約 1 小時。開放 08:30–15:30，門票 ₱60–100，停留約 45 分鐘。<span class="en" lang="en">On the way back, about an hour's drive. Open 08:30–15:30, entry ₱60–100, about 45 minutes.</span></p></div></li>
           <li><time class="soft">中午<span class="en" lang="en">Lunch</span></time><div><b>路上午餐<span class="en" lang="en">Lunch on the road</span></b><p>請司機推薦沿路餐廳，或撐到回邦勞島再吃。<span class="en" lang="en">Ask the driver for a place along the way, or wait until you're back on Panglao.</span></p></div></li>
-          <li><time>14:30</time><div><b>回飯店，下午按摩<span class="en" lang="en">Back to the resort, massage in the afternoon</span></b><p>都在 Alona 一帶，走路 10 分鐘內：Luna Tiger Spa（13:00–23:00）、궁스파 Goong spa 全身按摩（11:00–23:30）、ALONA ZEN SPA（11:00–23:00）、Goong foot spa 腳底按摩（11:30–23:30）。<span class="en" lang="en">All around Alona, within a 10-minute walk: Luna Tiger Spa (13:00–23:00), Goong Spa body massage (11:00–23:30), Alona Zen Spa (11:00–23:00), Goong Foot Spa (11:30–23:30).</span></p></div></li>
-          <li><time class="soft">晚上<span class="en" lang="en">Dinner</span></time><div><b>晚餐<span class="en" lang="en">Dinner</span></b><p>走路可到：Giuseppe Pizzeria（約 900 公尺）、BARWOO（約 1 公里，21:00 打烊）。搭三輪車 5–10 分鐘：MIST、6+ RESTAURANT、MOSA、Kamaya Restaurant &amp; Café。<span class="en" lang="en">Walkable: Giuseppe Pizzeria (about 900 m) or BARWOO (about 1 km, closes 21:00). By tricycle, 5–10 min: MIST, 6+ Restaurant, MOSA or Kamaya Restaurant &amp; Café.</span></p></div></li>
+          <li><time>14:30</time><div><b>回飯店<span class="en" lang="en">Back to the resort</span></b><p>下午到晚上自由安排：按摩、晚餐從<a class="jump" href="#picks">彈性清單</a>挑。<span class="en" lang="en">The afternoon and evening are free. Pick a massage and dinner from the <a class="jump" href="#picks">flexible list</a>.</span></p></div></li>
         </ol>
         <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
@@ -219,22 +264,39 @@
             <li>眼鏡猴白天在睡覺，保持安靜、不用閃光燈、不要觸摸。<span class="en" lang="en">Tarsiers sleep during the day. Keep quiet, no flash, no touching.</span></li>
             <li>1 月是雨季尾聲，巧克力山多半還是綠色，乾季（3–5 月）才會轉成咖啡色。<span class="en" lang="en">January is the end of the rainy season, so the hills are usually still green. They turn brown in the dry season (March to May).</span></li>
             <li>鄉間景點只收現金，準備小額披索。包車價格先講好包含幾小時、油錢與過路費，司機小費約 ₱200–300。<span class="en" lang="en">Countryside stops are cash only; bring small pesos. Agree on hours, fuel and tolls in the van price. Tip the driver about ₱200–300.</span></li>
-            <li>熱門按摩店下午到晚上常客滿，前一天先打電話預約。晚上回飯店的路燈少、路窄，遠一點的餐廳搭三輪車，上車前先談好價錢。<span class="en" lang="en">Popular spas fill up in the afternoon and evening, so call a day ahead. Roads are narrow and dark at night; take a tricycle to farther restaurants and agree on the fare first.</span></li>
             <li>雨天備案：上午留在飯店泳池，下午按摩，晚上去 Bohol Bee Farm 吃東西。<span class="en" lang="en">Rain plan: pool in the morning, massage in the afternoon, dinner at Bohol Bee Farm.</span></li>
           </ul>
         </div>
+        <div class="related"><h4>這天的地點<span class="en" lang="en">Places for the day</span></h4><div class="picks" data-ids="choco,tarsier"></div></div>
         <span class="stay">住宿 Stay：Henann Tawala Resort</span>
+      </article>
+
+      <article class="day flex" id="picks">
+        <header><span class="date">1/1–1/3</span><span class="dow">邦勞島 Panglao</span><h3>彈性清單：當天再決定<span class="en" lang="en">Flexible list: decide on the day</span></h3></header>
+        <p class="lead" style="margin:6px 0 0">還沒排定哪天去，看心情和天氣挑。點名稱看營業時間、距離和訂位方式。距離是從 Henann Tawala Resort 算起。<span class="en" lang="en">Not scheduled yet; choose by mood and weather. Tap a name for hours, distance and booking. Distances are from Henann Tawala Resort.</span></p>
+        <div class="group"><h4>海鮮<span class="en" lang="en">Seafood</span></h4><div class="picks" data-ids="jumbo,no1"></div></div>
+        <div class="group"><h4>披薩、義式<span class="en" lang="en">Pizza and Italian</span></h4><div class="picks" data-ids="atavola,toto,giuseppe"></div></div>
+        <div class="group"><h4>亞洲料理<span class="en" lang="en">Asian</span></h4><div class="picks" data-ids="barwoo,mist,six,mosa,kamaya"></div></div>
+        <div class="group"><h4>平價、甜點、咖啡<span class="en" lang="en">Casual, dessert and coffee</span></h4><div class="picks" data-ids="paeng,mocobay,crew,beefarm"></div></div>
+        <div class="group"><h4>按摩<span class="en" lang="en">Massage</span></h4><div class="picks" data-ids="luna,goong,goongfoot,zen"></div></div>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
+          <ul>
+            <li>海鮮餐廳和熱門按摩店，決定好就先訂位，前一天打電話最保險。<span class="en" lang="en">Once you decide, book seafood restaurants and popular spas, ideally a day ahead.</span></li>
+            <li>晚上路窄、路燈少，1 公里以上的地方搭三輪車，上車前先談好價錢。<span class="en" lang="en">Roads are narrow and dark at night. For anything over 1 km, take a tricycle and agree on the fare first.</span></li>
+            <li>元旦前後營業時間可能調整，出門前先在 Google 地圖確認。<span class="en" lang="en">Hours may change around New Year; check Google Maps before heading out.</span></li>
+          </ul>
+        </div>
       </article>
 
       <article class="day" data-date="2027-01-03" data-spot="cebu" data-sea>
         <header><span class="date">1/3</span><span class="dow">週日 Sun</span><h3>回宿霧市區，晚上逛商場<span class="en" lang="en">Back to Cebu City, mall shopping in the evening</span></h3></header>
         <div class="wx"></div>
         <ol class="steps">
-          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>早餐、海邊散步<span class="en" lang="en">Breakfast and a beach walk</span></b><p>早餐 6:00–10:00，泳池 8:00 開放。<span class="en" lang="en">Breakfast 6:00–10:00; the pool opens at 8:00.</span></p></div></li>
+          <li><time class="soft">上午<span class="en" lang="en">Morning</span></time><div><b>早餐、海邊散步<span class="en" lang="en">Breakfast and a beach walk</span></b><p>飯店早餐 6:00–10:00，泳池 8:00 開放。想在外面吃，可以從<a class="jump" href="#picks">彈性清單</a>挑早上就開的店。<span class="en" lang="en">Hotel breakfast 6:00–10:00; the pool opens at 8:00. To eat out, pick an early opener from the <a class="jump" href="#picks">flexible list</a>.</span></p></div></li>
           <li><time>11:00</time><div><b>退房<span class="en" lang="en">Check out</span></b><p>行李可以先寄放在櫃台。<span class="en" lang="en">You can leave your bags at the front desk.</span></p></div></li>
           <li><time>13:00</time><div><b>OceanJet 商務艙 → 宿霧 Pier 1<span class="en" lang="en">OceanJet Business Class → Cebu Pier 1</span></b><p>候選班次 13:00、14:00。<span class="pending">船票尚未開放<span class="en" lang="en">Not on sale yet</span></span><span class="en" lang="en">Candidate sailings: 13:00, 14:00.</span></p></div></li>
           <li><time class="soft">傍晚<span class="en" lang="en">Late afternoon</span></time><div><b>Grab 回 Seda Central Bloc<span class="en" lang="en">Grab to Seda Central Bloc</span></b><p>週日傍晚車多，預留時間。<span class="en" lang="en">Sunday evening traffic is heavy; allow extra time.</span></p></div></li>
-          <li><time class="soft">晚上<span class="en" lang="en">Evening</span></time><div><b>逛商場、吃晚餐<span class="en" lang="en">Mall shopping and dinner</span></b><p>Ayala Malls Central Bloc 就在飯店旁，週日營業到 22:00。想逛更大的，Ayala Center Cebu 離飯店約 1.3 公里，Grab 約 10 分鐘，也營業到 22:00。<span class="en" lang="en">Ayala Malls Central Bloc is next to the hotel and open until 22:00 on Sundays. For a bigger mall, Ayala Center Cebu is about 1.3 km away (10 min by Grab), also open until 22:00.</span></p></div></li>
+          <li><time class="soft">晚上<span class="en" lang="en">Evening</span></time><div><b>逛商場、吃晚餐<span class="en" lang="en">Mall shopping and dinner</span></b><p>從下面三間商場挑，週日都營業到 22:00。<span class="en" lang="en">Choose from the three malls below, all open until 22:00 on Sunday.</span></p></div></li>
         </ol>
         <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader notes</span></strong>
           <ul>
@@ -243,6 +305,7 @@
             <li>今晚把行李整理好，隔天早上直接出發去機場。<span class="en" lang="en">Pack tonight so you can leave straight for the airport tomorrow.</span></li>
           </ul>
         </div>
+        <div class="related"><h4>這天的地點<span class="en" lang="en">Places for the day</span></h4><div class="picks" data-ids="bloc,ayala,sm"></div></div>
         <span class="stay">住宿 Stay：Seda Central Bloc Cebu</span>
       </article>
 
@@ -259,13 +322,14 @@
             <li>剩下的披索可以在機場吃早餐或買伴手禮用掉。<span class="en" lang="en">Spend leftover pesos on breakfast or souvenirs at the airport.</span></li>
           </ul>
         </div>
+        <div class="related"><h4>這天的地點<span class="en" lang="en">Places for the day</span></h4><div class="picks" data-ids="bloc,sm"></div></div>
       </article>
     </section>
 
     <!-- 地圖 -->
     <section role="tabpanel" id="p-map" aria-labelledby="t-map" hidden>
       <h2>地圖<span class="en" lang="en">Map</span></h2>
-      <p class="lead">顏色代表哪一天會去。點名稱可以在地圖上定位，「導航」會用 Google 地圖開啟。餐廳和按摩分在可能會去的那天，實際哪天去都可以。<span class="en" lang="en">Colors show the day. Tap a name to find it on the map; "Navigate" opens Google Maps. Restaurants and spas are grouped under a likely day, but any day works.</span></p>
+      <p class="lead">顏色代表哪一天會去。點名稱可以在地圖上定位，「導航」會用 Google 地圖開啟。還沒排定日子的餐廳和按摩標成「彈性」。<span class="en" lang="en">Colors show the day. Tap a name to find it on the map; "Navigate" opens Google Maps. Restaurants and spas without a set day are marked "Flexible".</span></p>
       <div id="map" role="img" aria-label="旅程地點地圖 Trip locations map"></div>
       <div class="legend" id="legend"></div>
       <ul class="places" id="places"></ul>
@@ -303,40 +367,22 @@
     <!-- 購物 -->
     <section role="tabpanel" id="p-shop" aria-labelledby="t-shop" hidden>
       <h2>購物<span class="en" lang="en">Shopping</span></h2>
-      <p class="lead">1/3 傍晚到 1/4 是購物時間。營業時間來自 Google 地圖，假日可能調整。<span class="en" lang="en">Shopping time is the evening of 1/3 through 1/4. Hours are from Google Maps and may change on holidays.</span></p>
-      <div class="card"><span class="where">IT Park・飯店旁 Next to the hotel</span><h3>Ayala Malls Central Bloc</h3><p>走路就到，吃飯逛街都方便。週一至五 11:00–21:00，週六日 10:00–22:00。<span class="en" lang="en">A short walk from the hotel for meals and shopping. Mon–Fri 11:00–21:00, Sat–Sun 10:00–22:00.</span></p></div>
-      <div class="card"><span class="where">Cebu Business Park・約 1.3 km</span><h3>Ayala Center Cebu</h3><p>宿霧老牌大型購物中心，品牌多、餐廳多，Grab 約 10 分鐘。週一至五 11:00–21:00，週六日 10:00–22:00。<span class="en" lang="en">Cebu's long-established big mall with many brands and restaurants, about 10 min by Grab. Mon–Fri 11:00–21:00, Sat–Sun 10:00–22:00.</span></p></div>
-      <div class="card"><span class="where">SRP・約 6 km</span><h3>SM Seaside City Cebu</h3><p>宿霧最大的購物中心之一，Grab 20–40 分鐘，時間夠再去。週一至四 10:00–21:00，週五至日 10:00–22:00。<span class="en" lang="en">One of Cebu's largest malls, 20–40 min by Grab; go if you have time. Mon–Thu 10:00–21:00, Fri–Sun 10:00–22:00.</span></p></div>
+      <p class="lead">1/3 傍晚到 1/4 是購物時間。點名稱看營業時間與交通，時間來自 Google 地圖，假日可能調整。<span class="en" lang="en">Shopping time is the evening of 1/3 through 1/4. Tap a name for hours and directions. Hours are from Google Maps and may change on holidays.</span></p>
+      <div class="picks" data-ids="bloc,ayala,sm" style="margin-bottom:12px"></div>
       <div class="card"><h3>伴手禮<span class="en" lang="en">Souvenirs</span></h3><p>芒果乾是最常見的伴手禮，商場裡的超市都買得到。<span class="en" lang="en">Dried mangoes are the classic gift, sold in the supermarkets inside every mall.</span></p></div>
     </section>
 
     <!-- 餐廳 -->
     <section role="tabpanel" id="p-eat" aria-labelledby="t-eat" hidden>
-      <h2>餐廳<span class="en" lang="en">Food</span></h2>
-      <p class="lead">距離是從 Henann Tawala Resort 算起的直線距離。營業時間來自 Google 地圖，元旦前後可能調整。<span class="en" lang="en">Distances are straight-line from Henann Tawala Resort. Hours are from Google Maps and may change around New Year.</span></p>
-      <div class="card"><span class="where">宿霧・12/31 Cebu</span><h3>House of Lechon<span class="en" lang="en">Lechon (roast pig)</span></h3><p>宿霧招牌烤乳豬，皮脆肉香。Acacia St，離飯店約 1.5 km。每天 10:00–21:00，人均 ₱500–1,000，可在 autoreserve.com 訂位。<span class="en" lang="en">Cebu's signature roast pig with crispy skin. Acacia St, about 1.5 km from the hotel. Daily 10:00–21:00, ₱500–1,000 per person; book on autoreserve.com.</span></p></div>
-      <div class="card"><span class="where">邦勞島・步行 10 分鐘內 Panglao, under 10 min walk</span><h3>海鮮<span class="en" lang="en">Seafood</span></h3><ul>
-        <li><b>Jumbo Crab Bohol</b>：約 500 m，11:00–22:00，可訂位。<span class="en" lang="en">About 500 m, 11:00–22:00, takes reservations.</span></li>
-        <li><b>No.1 Seafood Restaurant</b>：約 500 m（Alona 停車場），10:00–22:00，人均 ₱500–3,500，可訂位。<span class="en" lang="en">About 500 m (Alona car park), 10:00–22:00, ₱500–3,500 per person, takes reservations.</span></li></ul></div>
-      <div class="card"><span class="where">邦勞島・步行 10 分鐘內 Panglao, under 10 min walk</span><h3>披薩、烤雞、甜點<span class="en" lang="en">Pizza, grilled chicken, dessert</span></h3><ul>
-        <li><b>A Tavola</b>：那不勒斯披薩，約 500 m，10:00–22:00。<span class="en" lang="en">Neapolitan pizza, about 500 m, 10:00–22:00.</span></li>
-        <li><b>Toto e Peppino</b>：披薩，約 450 m，10:00–22:30（週五六到 23:00）。<span class="en" lang="en">Pizza, about 450 m, 10:00–22:30 (Fri–Sat until 23:00).</span></li>
-        <li><b>The Original Paeng's (Alona)</b>：平價菲式烤雞，約 600 m。<span class="pending">營業時間待確認<span class="en" lang="en">Hours to confirm</span></span><span class="en" lang="en">Budget Filipino grilled chicken, about 600 m.</span></li>
-        <li><b>Mocobay</b>：冰淇淋、芒果冰沙，約 450 m，12:00–22:00，只外帶。<span class="en" lang="en">Gelato and mango shakes, about 450 m, 12:00–22:00, takeaway only.</span></li></ul></div>
-      <div class="card"><span class="where">邦勞島・稍遠 Panglao, a bit farther</span><h3>走路 10–15 分鐘或搭三輪車<span class="en" lang="en">10–15 min walk or a tricycle ride</span></h3><ul>
-        <li><b>Giuseppe Pizzeria &amp; Sicilian Roast</b>：披薩、義大利麵，約 900 m，11:30–22:00。<span class="en" lang="en">Pizza and pasta, about 900 m, 11:30–22:00.</span></li>
-        <li><b>BARWOO</b>：亞洲融合料理，約 1 km，12:00–14:45、17:00–21:00。<span class="en" lang="en">Asian fusion, about 1 km, 12:00–14:45 and 17:00–21:00.</span></li>
-        <li><b>MIST</b>：融合料理，在 Molly Resort 裡，約 1.4 km，10:30–22:00。<span class="en" lang="en">Fusion, inside Molly Resort, about 1.4 km, 10:30–22:00.</span></li>
-        <li><b>6+ RESTAURANT</b>：韓國料理，約 1.4 km，營業到 22:00。<span class="en" lang="en">Korean, about 1.4 km, open until 22:00.</span></li>
-        <li><b>MOSA</b>：亞洲融合、地中海料理，約 2.2 km，10:30–22:30。<span class="en" lang="en">Asian fusion and Mediterranean, about 2.2 km, 10:30–22:30.</span></li>
-        <li><b>Kamaya Restaurant &amp; Café</b>：亞洲融合料理，約 2.3 km，07:00–22:00。<span class="en" lang="en">Asian fusion, about 2.3 km, 07:00–22:00.</span></li></ul></div>
-      <div class="card"><span class="where">邦勞島・港口路上 Panglao, on the way from the port</span><h3>Common Crew Coffee Roasters &amp; Brewers</h3><p>自家烘焙咖啡，約 2.2 km，10:00–18:00，週三公休。1/1 從港口到飯店時可以順路停。<span class="en" lang="en">Specialty roaster, about 2.2 km, 10:00–18:00, closed Wednesdays. Easy to stop on the way from the port on 1/1.</span></p></div>
-      <h2>按摩<span class="en" lang="en">Massage</span></h2>
-      <div class="card"><span class="where">邦勞島 Alona・步行 10–12 分鐘內 Panglao, within a 12 min walk</span><ul>
-        <li><b>Luna Tiger Spa &amp; Massage</b>：約 750 m，13:00–23:00。附近另有一間 Alona 分店，預約時講清楚是哪一間。<span class="en" lang="en">About 750 m, 13:00–23:00. There's also an Alona branch nearby; say which one when booking.</span></li>
-        <li><b>궁스파 Goong spa（全身按摩）</b>：約 650 m，11:00–23:30，電話 +63 967 372 2111。<span class="en" lang="en">Goong Spa (body massage): about 650 m, 11:00–23:30, +63 967 372 2111.</span></li>
-        <li><b>Goong foot spa（腳底按摩）</b>：約 900 m，11:30–23:30，電話 +63 966 289 7700。和上面的 Goong spa 是不同店面。<span class="en" lang="en">Goong Foot Spa: about 900 m, 11:30–23:30, +63 966 289 7700. A different shop from Goong Spa above.</span></li>
-        <li><b>ALONA ZEN SPA</b>：在 Alona Cube Mall 裡，約 550 m，11:00–23:00，電話 +63 927 993 0352。<span class="en" lang="en">Inside Alona Cube Mall, about 550 m, 11:00–23:00, +63 927 993 0352.</span></li></ul></div>
+      <h2>餐廳與按摩<span class="en" lang="en">Food and massage</span></h2>
+      <p class="lead">點名稱看營業時間、距離和訂位方式。邦勞島的距離從 Henann Tawala Resort 算起，營業時間來自 Google 地圖，元旦前後可能調整。<span class="en" lang="en">Tap a name for hours, distance and booking. Panglao distances are from Henann Tawala Resort. Hours are from Google Maps and may change around New Year.</span></p>
+        <div class="group"><h4>宿霧 12/31<span class="en" lang="en">Cebu, 12/31</span></h4><div class="picks" data-ids="lechon"></div></div>
+        <div class="group"><h4>海鮮<span class="en" lang="en">Seafood</span></h4><div class="picks" data-ids="jumbo,no1"></div></div>
+        <div class="group"><h4>披薩、義式<span class="en" lang="en">Pizza and Italian</span></h4><div class="picks" data-ids="atavola,toto,giuseppe"></div></div>
+        <div class="group"><h4>亞洲料理<span class="en" lang="en">Asian</span></h4><div class="picks" data-ids="barwoo,mist,six,mosa,kamaya"></div></div>
+        <div class="group"><h4>平價、甜點、咖啡<span class="en" lang="en">Casual, dessert and coffee</span></h4><div class="picks" data-ids="paeng,mocobay,crew,beefarm"></div></div>
+        <div class="group"><h4>按摩<span class="en" lang="en">Massage</span></h4><div class="picks" data-ids="luna,goong,goongfoot,zen"></div></div>
+      <div style="height:12px"></div>
       <div class="card"><h3>用餐與按摩提醒<span class="en" lang="en">Dining and spa tips</span></h3><ul>
         <li>不生飲自來水，喝瓶裝水。<span class="en" lang="en">Don't drink tap water; drink bottled water.</span></li>
         <li>帳單常已含服務費，沒含的話可以留約一成小費。按摩小費約 ₱100–200。<span class="en" lang="en">Bills often include a service charge; if not, tip about 10%. Tip about ₱100–200 for a massage.</span></li>
@@ -347,9 +393,7 @@
     <!-- 景點 -->
     <section role="tabpanel" id="p-see" aria-labelledby="t-see" hidden>
       <h2>景點<span class="en" lang="en">Sights</span></h2>
-      <div class="card"><span class="where">宿霧市區・12/31 Cebu City</span><h3>Plaza Independencia<span class="en" lang="en">Independence Square</span></h3><p>宿霧市中心的歷史廣場，旁邊是西班牙時期的聖佩德羅堡。市政府的官方跨年倒數和 Sinulog 開幕煙火在這裡舉行。<span class="en" lang="en">A historic square in downtown Cebu next to the Spanish-era Fort San Pedro. The city's official New Year countdown and the Sinulog opening fireworks are held here.</span></p></div>
-      <div class="card"><span class="where">薄荷島・1/2 Bohol</span><h3>巧克力山<span class="en" lang="en">Chocolate Hills</span></h3><p>上千座圓錐形小山，乾季草色轉褐，看起來像一顆顆巧克力；1 月多半還是綠色。門票 ₱100。<span class="en" lang="en">Over a thousand cone-shaped hills that turn brown in the dry season like chocolate drops; in January they're usually still green. Entry ₱100.</span></p></div>
-      <div class="card"><span class="where">薄荷島・1/2 Bohol</span><h3>菲律賓眼鏡猴保護區<span class="en" lang="en">Philippine Tarsier Sanctuary</span></h3><p>在 Corella，世界最小的靈長類之一。白天在睡覺，請保持安靜、不用閃光燈。開放 08:30–15:30，門票 ₱60–100。<span class="en" lang="en">In Corella, home to one of the world's smallest primates. They sleep by day, so keep quiet and don't use flash. Open 08:30–15:30, entry ₱60–100.</span></p></div>
+      <div class="picks" data-ids="plaza,choco,tarsier" style="margin-bottom:12px"></div>
       <div class="card"><span class="where">邦勞島 Panglao</span><h3>Alona Beach</h3><p>從飯店走路就到的白沙灘，傍晚看夕陽。<span class="en" lang="en">A white-sand beach a short walk from the resort; best at sunset.</span></p></div>
       <div class="card"><span class="where">宿霧 Cebu</span><h3>聖嬰大教堂、麥哲倫十字架<span class="en" lang="en">Basilica del Santo Niño, Magellan's Cross</span></h3><p>宿霧最有代表性的歷史景點，兩處就在隔壁。<span class="en" lang="en">Cebu's best-known historic sites, right next to each other.</span></p></div>
     </section>
@@ -387,6 +431,21 @@
       <span class="en" lang="en">Last updated 7 Oct 2026. Prices are for reference; check opening hours and transport before you go. Weather and sea data: Open-Meteo. Exchange rate: ExchangeRate-API. Map: OpenStreetMap.</span>
     </footer>
   </main>
+
+<dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
+  <div class="sheet-in">
+    <button type="button" class="x" aria-label="關閉 Close">×</button>
+    <p class="sheet-area"></p>
+    <h2 id="sheet-title"></h2>
+    <p class="sheet-about"></p>
+    <dl class="facts"></dl>
+    <div class="tip"><strong>領隊提醒<span class="en" lang="en">Tour leader note</span></strong><p></p></div>
+    <div class="sheet-actions">
+      <a class="btn" target="_blank" rel="noopener">Google 地圖導航<span class="en" lang="en">Navigate</span></a>
+      <button type="button" class="btn ghost">在地圖上看<span class="en" lang="en">Show on map</span></button>
+    </div>
+  </div>
+</dialog>
 
 <script>
   // countdown
@@ -447,60 +506,118 @@
     .catch(() => { document.getElementById("fx").textContent = "—"; });
 
   // map (Leaflet + OpenStreetMap, free)
-  const dayColors = { "12/31": "#E2725B", "1/1": "#F2C14E", "1/2": "#2E9E6B", "1/3": "#0E4D64", "1/4": "#7A6FB0" };
+  const dayColors = { "12/31": "#E2725B", "1/1": "#F2C14E", "1/2": "#2E9E6B", "彈性": "#B5527F", "1/3": "#0E4D64", "1/4": "#7A6FB0" };
+  const dayName = d => d === "彈性" ? "1/1–1/3 彈性 Flexible" : d;
   const places = [
     ["麥克坦－宿霧國際機場", "Mactan-Cebu International Airport", "12/31、1/4", "12/31", 10.3075, 123.9794, "Mactan-Cebu International Airport"],
     ["Seda Central Bloc Cebu", "Hotel", "12/31、1/3 住宿 Stay", "12/31", 10.3297, 123.9055, "Seda Central Bloc Cebu"],
-    ["House of Lechon", "Roast pig", "12/31 晚餐備選 Dinner option", "12/31", 10.3177, 123.9017, "House of Lechon Acacia Street Cebu"],
-    ["Plaza Independencia", "New Year fireworks", "12/31 跨年煙火 Countdown", "12/31", 10.2932, 123.9051, "Plaza Independencia Cebu City"],
     ["宿霧 Pier 1（OceanJet）", "Cebu Pier 1", "1/1 出發、1/3 抵達", "1/1", 10.2943, 123.9066, "OceanJet Cebu Pier 1"],
     ["塔比拉蘭港", "Tagbilaran Port", "1/1 抵達、1/3 出發", "1/1", 9.6455, 123.8527, "Tagbilaran City Tourist Port"],
-    ["Common Crew Coffee", "Coffee", "1/1 順路 On the way", "1/1", 9.5673, 123.7853, "Common Crew Coffee Roasters & Brewers Panglao"],
     ["Henann Tawala Resort", "Resort", "1/1、1/2 住宿 Stay", "1/1", 9.5497, 123.7765, "Henann Tawala Resort Panglao"],
     ["Alona Beach", "Sunset spot", "看夕陽", "1/1", 9.5502, 123.7743, "Alona Beach Panglao"],
-    ["Jumbo Crab Bohol", "Seafood", "晚餐 Dinner", "1/1", 9.5536, 123.7737, "Jumbo Crab Bohol"],
-    ["No.1 Seafood Restaurant", "Seafood", "晚餐 Dinner", "1/1", 9.5499, 123.7720, "No.1 Seafood Restaurant Panglao"],
-    ["A Tavola", "Pizza", "晚餐 Dinner", "1/1", 9.5534, 123.7740, "A Tavola Panglao"],
-    ["Toto e Peppino", "Pizza", "晚餐 Dinner", "1/1", 9.5527, 123.7736, "Toto e Peppino Panglao"],
-    ["The Original Paeng's", "Grilled chicken", "晚餐 Dinner", "1/1", 9.5507, 123.7712, "The Original Paeng's Alona Panglao"],
-    ["Mocobay", "Gelato", "甜點 Dessert", "1/1", 9.5528, 123.7738, "Mocobay Panglao"],
-    ["巧克力山", "Chocolate Hills", "1/2 包車 Van tour", "1/2", 9.7982, 124.1685, "Chocolate Hills Complex Carmen Bohol"],
-    ["眼鏡猴保護區", "Tarsier Sanctuary", "1/2 包車 Van tour", "1/2", 9.6908, 123.9527, "Philippine Tarsier Sanctuary Corella"],
-    ["Luna Tiger Spa", "Massage", "按摩 Spa", "1/2", 9.5514, 123.7698, "Luna Tiger Spa & Massage Panglao"],
-    ["궁스파 Goong spa", "Body massage", "按摩 Spa", "1/2", 9.5504, 123.7708, "Goong spa Panglao"],
-    ["Goong foot spa", "Foot massage", "按摩 Spa", "1/2", 9.5515, 123.7686, "Goong foot spa Panglao"],
-    ["ALONA ZEN SPA", "Massage", "按摩 Spa", "1/2", 9.5510, 123.7714, "Alona Zen Spa Panglao"],
-    ["Giuseppe Pizzeria", "Pizza", "晚餐 Dinner", "1/2", 9.5579, 123.7749, "Giuseppe Pizzeria Sicilian Roast Bohol"],
-    ["BARWOO", "Asian fusion", "晚餐 Dinner", "1/2", 9.5514, 123.7675, "BARWOO Panglao"],
-    ["MIST", "Fusion", "晚餐 Dinner", "1/2", 9.5507, 123.7641, "MIST Molly Resort Panglao"],
-    ["6+ RESTAURANT", "Korean", "晚餐 Dinner", "1/2", 9.5529, 123.7640, "6+ RESTAURANT Panglao"],
-    ["MOSA", "Asian fusion", "晚餐 Dinner", "1/2", 9.5574, 123.7580, "MOSA Panglao"],
-    ["Kamaya Restaurant & Café", "Asian fusion", "晚餐 Dinner", "1/2", 9.5494, 123.7553, "Kamaya Restaurant Cafe Panglao"],
-    ["Bohol Bee Farm", "Farm restaurant", "雨天備案 Rain plan", "1/2", 9.5867, 123.8044, "Bohol Bee Farm"],
-    ["Ayala Malls Central Bloc", "Mall next to the hotel", "1/3–1/4 購物 Shopping", "1/3", 10.3307, 123.9073, "Ayala Malls Central Bloc"],
-    ["Ayala Center Cebu", "Mall", "1/3 購物 Shopping", "1/3", 10.3182, 123.9052, "Ayala Center Cebu"],
-    ["SM Seaside City Cebu", "Mall", "購物 Shopping", "1/3", 10.2818, 123.8816, "SM Seaside City Cebu"],
     ["聖嬰大教堂", "Basilica del Santo Niño", "景點 Sight", "1/3", 10.2943, 123.9020, "Basilica Minore del Santo Nino Cebu"]
   ];
+  // places with buttons and an info sheet
+  const SPOTS = [{"id": "lechon", "name": "House of Lechon", "en": "Lechon restaurant", "cat": "food", "area": "宿霧・Acacia St", "areaEn": "Cebu City", "sum": "宿霧烤乳豬名店", "sumEn": "Cebu's famous roast pig", "about": "宿霧招牌菜烤乳豬，皮脆肉香。12/31 跨年夜晚餐的備選。", "aboutEn": "Cebu's signature roast pig with crispy skin. Backup dinner on New Year's Eve.", "dist": "離 Seda 約 1.5 km，Grab 約 10 分鐘", "distEn": "About 1.5 km from Seda, 10 min by Grab", "km": "1.5 km", "hours": "每天 10:00–21:00", "hoursEn": "Daily 10:00–21:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "建議訂位：autoreserve.com 或電話", "bookEn": "Book via autoreserve.com or by phone", "phone": "+63 916 662 0163", "rate": "4.5", "tip": "跨年夜人多，12 月中先訂位。", "tipEn": "It's busy on New Year's Eve. Book by mid-December.", "lat": 10.3177, "lon": 123.9017, "q": "House of Lechon Acacia Street Cebu", "day": "12/31"}, {"id": "plaza", "name": "Plaza Independencia", "en": "Official New Year fireworks", "cat": "sight", "area": "宿霧市區", "areaEn": "Downtown Cebu", "sum": "市府官方跨年煙火會場", "sumEn": "Official city countdown venue", "about": "市中心的歷史廣場，旁邊是聖佩德羅堡。宿霧市府的官方跨年倒數和 Sinulog 開幕煙火在這裡舉行，2024、2025 年都是。", "aboutEn": "A historic square downtown next to Fort San Pedro. Cebu City's official countdown and the Sinulog opening fireworks were held here in 2024 and 2025.", "dist": "離 Seda 約 4 km，平常車程 20–30 分鐘", "distEn": "About 4 km from Seda, normally 20–30 min", "km": "4 km", "hours": "公園 24 小時開放；去年跨年節目 17:00 開始", "hoursEn": "Open 24 hours; last year's program started at 17:00", "price": "免費", "priceEn": "Free", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.5", "tip": "去年 12/31 15:00 到 1/1 05:00 周邊交通管制，Grab 只能送到管制區外。散場後先走出管制區再叫車，或請飯店安排來回包車。", "tipEn": "Last year roads closed from 15:00 on 12/31 to 05:00 on 1/1, so Grab drops you outside the zone. After midnight, walk out of the zone before booking a ride, or have the hotel arrange a return car.", "lat": 10.2932, "lon": 123.9051, "q": "Plaza Independencia Cebu City", "day": "12/31"}, {"id": "choco", "name": "巧克力山", "en": "Chocolate Hills", "cat": "sight", "area": "薄荷島・Carmen", "areaEn": "Carmen, Bohol", "sum": "上千座圓錐形小山", "sumEn": "A thousand cone-shaped hills", "about": "上千座圓錐形小山，乾季（3–5 月）草色轉成咖啡色，1 月多半還是綠色。觀景台要爬 200 多階。", "aboutEn": "Over a thousand cone-shaped hills that turn brown in the dry season (March to May); in January they're usually green. The viewing deck is up 200-plus steps.", "dist": "離飯店約 2 小時車程", "distEn": "About 2 hours' drive from the resort", "km": "2 hr", "hours": "白天開放，確切時間出發前確認", "hoursEn": "Open in daytime; confirm hours before you go", "price": "門票 ₱100", "priceEn": "Entry ₱100", "book": "不用（包車要預約）", "bookEn": "Not needed (book the van)", "phone": "", "rate": "", "tip": "早上人少、光線好，所以排在第一站。", "tipEn": "Fewer crowds and better light in the morning, so it's the first stop.", "lat": 9.7982, "lon": 124.1685, "q": "Chocolate Hills Complex Carmen Bohol", "day": "1/2"}, {"id": "tarsier", "name": "菲律賓眼鏡猴保護區", "en": "Philippine Tarsier Sanctuary", "cat": "sight", "area": "薄荷島・Corella", "areaEn": "Corella, Bohol", "sum": "看世界最小的靈長類之一", "sumEn": "See one of the world's smallest primates", "about": "由 Philippine Tarsier Foundation 經營的保護區。眼鏡猴白天在睡覺，沿著步道安靜觀察。", "aboutEn": "Run by the Philippine Tarsier Foundation. Tarsiers sleep by day; you watch them quietly from a trail.", "dist": "巧克力山回程順路，約 1 小時車程", "distEn": "On the way back from the hills, about an hour's drive", "km": "1 hr", "hours": "08:30–15:30（週日到 15:00）", "hoursEn": "08:30–15:30 (Sun until 15:00)", "price": "門票 ₱60–100", "priceEn": "Entry ₱60–100", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "", "tip": "保持安靜、不用閃光燈、不要觸摸。跟司機講明要去 Corella 這間。", "tipEn": "Keep quiet, no flash, no touching. Tell the driver you want the one in Corella.", "lat": 9.6908, "lon": 123.9527, "q": "Philippine Tarsier Sanctuary Corella", "day": "1/2"}, {"id": "jumbo", "name": "Jumbo Crab Bohol", "en": "Crab and seafood", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "螃蟹海鮮", "sumEn": "Crab and seafood", "about": "以螃蟹為主的海鮮餐廳，Alona 一帶人氣很高。", "aboutEn": "A crab-focused seafood restaurant, very popular around Alona.", "dist": "離飯店約 500 m，步行 7 分鐘", "distEn": "About 500 m from the resort, 7 min walk", "km": "500 m", "hours": "每天 11:00–22:00", "hoursEn": "Daily 11:00–22:00", "price": "螃蟹多半秤重計價", "priceEn": "Crab is usually priced by weight", "book": "可訂位：jumbocrabbohol.com 或 Kakao", "bookEn": "Book at jumbocrabbohol.com or on Kakao", "phone": "+63 966 155 9623", "rate": "4.6", "tip": "點餐前先問清楚每公斤價格。", "tipEn": "Ask the price per kilo before ordering.", "lat": 9.5536, "lon": 123.7737, "q": "Jumbo Crab Bohol", "day": "彈性"}, {"id": "no1", "name": "No.1 Seafood Restaurant", "en": "Seafood", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "海鮮餐廳，評價很高", "sumEn": "Highly rated seafood", "about": "Alona 停車場旁的海鮮餐廳。", "aboutEn": "A seafood restaurant by the Alona car park.", "dist": "離飯店約 500 m，步行 7 分鐘", "distEn": "About 500 m from the resort, 7 min walk", "km": "500 m", "hours": "每天 10:00–22:00", "hoursEn": "Daily 10:00–22:00", "price": "人均 ₱500–3,500，依海鮮種類", "priceEn": "₱500–3,500 per person, depending on the seafood", "book": "可訂位", "bookEn": "Takes reservations", "phone": "", "rate": "4.8", "tip": "元旦前後人多，先訂位。", "tipEn": "Book ahead over the New Year holiday.", "lat": 9.5499, "lon": 123.772, "q": "No.1 Seafood Restaurant Panglao", "day": "彈性"}, {"id": "atavola", "name": "A Tavola", "en": "Neapolitan pizza", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "那不勒斯窯烤披薩", "sumEn": "Wood-fired Neapolitan pizza", "about": "拿坡里風格披薩，也可以外帶。", "aboutEn": "Neapolitan-style pizza; takeaway available.", "dist": "離飯店約 500 m，步行 7 分鐘", "distEn": "About 500 m from the resort, 7 min walk", "km": "500 m", "hours": "每天 10:00–22:00", "hoursEn": "Daily 10:00–22:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "不用", "bookEn": "Not needed", "phone": "+63 905 549 1619", "rate": "4.5", "tip": "", "tipEn": "", "lat": 9.5534, "lon": 123.774, "q": "A Tavola Panglao", "day": "彈性"}, {"id": "toto", "name": "Toto e Peppino", "en": "Pizza and Italian", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "披薩、義式料理", "sumEn": "Pizza and Italian dishes", "about": "Alona 一帶的義式餐廳，營業到比較晚。", "aboutEn": "An Italian restaurant near Alona that stays open late.", "dist": "離飯店約 450 m，步行 6 分鐘", "distEn": "About 450 m from the resort, 6 min walk", "km": "450 m", "hours": "10:00–22:30（週五、六到 23:00）", "hoursEn": "10:00–22:30 (Fri–Sat until 23:00)", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.2", "tip": "", "tipEn": "", "lat": 9.5527, "lon": 123.7736, "q": "Toto e Peppino Panglao", "day": "彈性"}, {"id": "giuseppe", "name": "Giuseppe Pizzeria & Sicilian Roast", "en": "Pizza and pasta", "cat": "food", "area": "邦勞島・Tawala", "areaEn": "Tawala, Panglao", "sum": "西西里風披薩、義大利麵", "sumEn": "Sicilian-style pizza and pasta", "about": "披薩、義大利麵和西西里式烤肉。", "aboutEn": "Pizza, pasta and Sicilian roasts.", "dist": "離飯店約 900 m，步行 12 分鐘", "distEn": "About 900 m from the resort, 12 min walk", "km": "900 m", "hours": "每天 11:30–22:00", "hoursEn": "Daily 11:30–22:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.3", "tip": "", "tipEn": "", "lat": 9.5579, "lon": 123.7749, "q": "Giuseppe Pizzeria Sicilian Roast Bohol", "day": "彈性"}, {"id": "barwoo", "name": "BARWOO", "en": "Asian fusion", "cat": "food", "area": "邦勞島", "areaEn": "Panglao", "sum": "亞洲融合料理", "sumEn": "Asian fusion", "about": "亞洲融合料理，午餐和晚餐分兩段營業。", "aboutEn": "Asian fusion, with separate lunch and dinner hours.", "dist": "離飯店約 1 km，步行 13 分鐘或搭三輪車", "distEn": "About 1 km, 13 min walk or a tricycle", "km": "1 km", "hours": "12:00–14:45、17:00–21:00", "hoursEn": "12:00–14:45 and 17:00–21:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "建議訂位", "bookEn": "Booking recommended", "phone": "", "rate": "4.4", "tip": "21:00 就打烊，晚餐別太晚去。", "tipEn": "Closes at 21:00, so don't go too late.", "lat": 9.5514, "lon": 123.7675, "q": "BARWOO Panglao", "day": "彈性"}, {"id": "mist", "name": "MIST", "en": "Fusion", "cat": "food", "area": "邦勞島・Molly Resort", "areaEn": "Molly Resort, Panglao", "sum": "融合料理，在度假村裡", "sumEn": "Fusion, inside a resort", "about": "在 Molly Resort Bohol 裡的餐廳。", "aboutEn": "A restaurant inside Molly Resort Bohol.", "dist": "離飯店約 1.4 km，三輪車約 5 分鐘", "distEn": "About 1.4 km, 5 min by tricycle", "km": "1.4 km", "hours": "每天 10:30–22:00", "hoursEn": "Daily 10:30–22:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.2", "tip": "", "tipEn": "", "lat": 9.5507, "lon": 123.7641, "q": "MIST Molly Resort Panglao", "day": "彈性"}, {"id": "six", "name": "6+ RESTAURANT", "en": "Korean", "cat": "food", "area": "邦勞島", "areaEn": "Panglao", "sum": "韓國料理，評價很高", "sumEn": "Highly rated Korean", "about": "韓國料理餐廳。", "aboutEn": "A Korean restaurant.", "dist": "離飯店約 1.4 km，三輪車約 5 分鐘", "distEn": "About 1.4 km, 5 min by tricycle", "km": "1.4 km", "hours": "營業到 22:00，完整時間出發前確認", "hoursEn": "Open until 22:00; confirm full hours before you go", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "建議訂位", "bookEn": "Booking recommended", "phone": "", "rate": "4.9", "tip": "", "tipEn": "", "lat": 9.5529, "lon": 123.764, "q": "6+ RESTAURANT Panglao", "day": "彈性"}, {"id": "mosa", "name": "MOSA", "en": "Asian fusion and Mediterranean", "cat": "food", "area": "邦勞島", "areaEn": "Panglao", "sum": "亞洲融合、地中海料理", "sumEn": "Asian fusion and Mediterranean", "about": "亞洲融合與地中海風格料理。", "aboutEn": "Asian fusion and Mediterranean dishes.", "dist": "離飯店約 2.2 km，三輪車約 10 分鐘", "distEn": "About 2.2 km, 10 min by tricycle", "km": "2.2 km", "hours": "每天 10:30–22:30", "hoursEn": "Daily 10:30–22:30", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.3", "tip": "", "tipEn": "", "lat": 9.5574, "lon": 123.758, "q": "MOSA Panglao", "day": "彈性"}, {"id": "kamaya", "name": "Kamaya Restaurant & Café", "en": "Asian fusion", "cat": "food", "area": "邦勞島・Danao", "areaEn": "Danao, Panglao", "sum": "亞洲融合料理，早上 7 點就開", "sumEn": "Asian fusion, opens at 7", "about": "早上 7 點開門，早午餐和晚餐都適合。", "aboutEn": "Opens at 7 am; good for brunch or dinner.", "dist": "離飯店約 2.3 km，三輪車約 10 分鐘", "distEn": "About 2.3 km, 10 min by tricycle", "km": "2.3 km", "hours": "每天 07:00–22:00", "hoursEn": "Daily 07:00–22:00", "price": "人均 ₱500–1,000", "priceEn": "₱500–1,000 per person", "book": "建議訂位", "bookEn": "Booking recommended", "phone": "+63 995 475 2307", "rate": "4.9", "tip": "", "tipEn": "", "lat": 9.5494, "lon": 123.7553, "q": "Kamaya Restaurant Cafe Panglao", "day": "彈性"}, {"id": "paeng", "name": "The Original Paeng's", "en": "Filipino grilled chicken", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "平價菲式烤雞", "sumEn": "Budget Filipino grilled chicken", "about": "菲式炭烤雞，便宜又快。", "aboutEn": "Charcoal-grilled Filipino chicken, quick and cheap.", "dist": "離飯店約 600 m，步行 8 分鐘", "distEn": "About 600 m from the resort, 8 min walk", "km": "600 m", "hours": "Google 地圖沒有列，出發前確認", "hoursEn": "Not listed on Google Maps; confirm before you go", "price": "人均 ₱500 以下", "priceEn": "Under ₱500 per person", "book": "不用", "bookEn": "Not needed", "phone": "+63 927 867 0620", "rate": "4.4", "tip": "", "tipEn": "", "lat": 9.5507, "lon": 123.7712, "q": "The Original Paeng's Alona Panglao", "day": "彈性"}, {"id": "mocobay", "name": "Mocobay", "en": "Gelato and shakes", "cat": "food", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "冰淇淋、芒果冰沙", "sumEn": "Gelato and mango shakes", "about": "甜點店，只能外帶。", "aboutEn": "A dessert shop, takeaway only.", "dist": "離飯店約 450 m，步行 6 分鐘", "distEn": "About 450 m from the resort, 6 min walk", "km": "450 m", "hours": "每天 12:00–22:00", "hoursEn": "Daily 12:00–22:00", "price": "平價", "priceEn": "Inexpensive", "book": "不用", "bookEn": "Not needed", "phone": "+63 966 156 1349", "rate": "4.9", "tip": "", "tipEn": "", "lat": 9.5528, "lon": 123.7738, "q": "Mocobay Panglao", "day": "彈性"}, {"id": "crew", "name": "Common Crew Coffee", "en": "Coffee roasters", "cat": "food", "area": "邦勞島・Tawala", "areaEn": "Tawala, Panglao", "sum": "自家烘焙咖啡館", "sumEn": "Specialty coffee roaster", "about": "精品咖啡烘焙店，就在塔比拉蘭港往飯店的路上。", "aboutEn": "A specialty roaster on the road from Tagbilaran port to the resort.", "dist": "離飯店約 2.2 km；1/1 從港口過來可以順路停", "distEn": "About 2.2 km; an easy stop on the way from the port on 1/1", "km": "2.2 km", "hours": "10:00–18:00，週三公休", "hoursEn": "10:00–18:00, closed Wednesdays", "price": "平價", "priceEn": "Inexpensive", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "4.7", "tip": "元旦有沒有營業出發前確認；搭接送車的話先跟司機說要停。", "tipEn": "Check whether it's open on New Year's Day. Tell the driver in advance if you want to stop.", "lat": 9.5673, "lon": 123.7853, "q": "Common Crew Coffee Roasters & Brewers Panglao", "day": "彈性"}, {"id": "beefarm", "name": "Bohol Bee Farm", "en": "Organic farm restaurant", "cat": "food", "area": "邦勞島", "areaEn": "Panglao", "sum": "有機農場餐廳，雨天備案", "sumEn": "Organic farm restaurant, rain plan", "about": "有機農場餐廳，冰淇淋和麵包有名。下雨不想出遠門時的好選擇。", "aboutEn": "An organic farm restaurant known for ice cream and bread. A good pick on a rainy day.", "dist": "離飯店約 5 km，車程約 15 分鐘", "distEn": "About 5 km, 15 min by car", "km": "5 km", "hours": "出發前確認", "hoursEn": "Confirm before you go", "price": "中等", "priceEn": "Mid-range", "book": "不用", "bookEn": "Not needed", "phone": "", "rate": "", "tip": "", "tipEn": "", "lat": 9.5867, "lon": 123.8044, "q": "Bohol Bee Farm", "day": "彈性"}, {"id": "luna", "name": "Luna Tiger Spa & Massage", "en": "Massage and spa", "cat": "spa", "area": "邦勞島", "areaEn": "Panglao", "sum": "全身按摩、水療，評論最多", "sumEn": "Massage and spa, most reviewed", "about": "全身按摩和水療。附近另有一間 Alona 分店。", "aboutEn": "Massage and spa treatments. There's also an Alona branch nearby.", "dist": "離飯店約 750 m，步行 10 分鐘", "distEn": "About 750 m from the resort, 10 min walk", "km": "750 m", "hours": "每天 13:00–23:00", "hoursEn": "Daily 13:00–23:00", "price": "以店家價目表為準", "priceEn": "See the shop's price list", "book": "建議前一天預約", "bookEn": "Book a day ahead", "phone": "", "rate": "4.8", "tip": "預約時講清楚是主店還是 Alona 分店。", "tipEn": "When booking, say whether you want the main shop or the Alona branch.", "lat": 9.5514, "lon": 123.7698, "q": "Luna Tiger Spa & Massage Panglao", "day": "彈性"}, {"id": "goong", "name": "궁스파 Goong spa", "en": "Body massage", "cat": "spa", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "全身按摩", "sumEn": "Body massage", "about": "以全身按摩為主的按摩店。", "aboutEn": "A shop focused on full-body massage.", "dist": "離飯店約 650 m，步行 8 分鐘", "distEn": "About 650 m from the resort, 8 min walk", "km": "650 m", "hours": "每天 11:00–23:30", "hoursEn": "Daily 11:00–23:30", "price": "以店家價目表為準", "priceEn": "See the shop's price list", "book": "建議前一天預約", "bookEn": "Book a day ahead", "phone": "+63 967 372 2111", "rate": "4.5", "tip": "跟 Goong foot spa 是不同店面。", "tipEn": "A different shop from Goong Foot Spa.", "lat": 9.5504, "lon": 123.7708, "q": "Goong spa Panglao", "day": "彈性"}, {"id": "goongfoot", "name": "Goong foot spa", "en": "Foot massage", "cat": "spa", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "腳底按摩", "sumEn": "Foot massage", "about": "腳底按摩店，走了一天之後很適合。", "aboutEn": "A foot massage shop, ideal after a day of walking.", "dist": "離飯店約 900 m，步行 12 分鐘", "distEn": "About 900 m from the resort, 12 min walk", "km": "900 m", "hours": "每天 11:30–23:30", "hoursEn": "Daily 11:30–23:30", "price": "以店家價目表為準", "priceEn": "See the shop's price list", "book": "建議前一天預約", "bookEn": "Book a day ahead", "phone": "+63 966 289 7700", "rate": "4.7", "tip": "", "tipEn": "", "lat": 9.5515, "lon": 123.7686, "q": "Goong foot spa Panglao", "day": "彈性"}, {"id": "zen", "name": "ALONA ZEN SPA", "en": "Massage", "cat": "spa", "area": "邦勞島・Alona", "areaEn": "Alona, Panglao", "sum": "按摩，在 Alona Cube Mall 裡", "sumEn": "Massage, in Alona Cube Mall", "about": "位在 Alona Cube Mall 裡的按摩店。", "aboutEn": "A massage shop inside Alona Cube Mall.", "dist": "離飯店約 550 m，步行 7 分鐘", "distEn": "About 550 m from the resort, 7 min walk", "km": "550 m", "hours": "每天 11:00–23:00", "hoursEn": "Daily 11:00–23:00", "price": "以店家價目表為準", "priceEn": "See the shop's price list", "book": "建議前一天預約", "bookEn": "Book a day ahead", "phone": "+63 927 993 0352", "rate": "4.2", "tip": "", "tipEn": "", "lat": 9.551, "lon": 123.7714, "q": "Alona Zen Spa Panglao", "day": "彈性"}, {"id": "bloc", "name": "Ayala Malls Central Bloc", "en": "Mall next to the hotel", "cat": "mall", "area": "宿霧・IT Park", "areaEn": "IT Park, Cebu", "sum": "飯店旁的商場", "sumEn": "The mall next to the hotel", "about": "就在 Seda 旁邊，吃飯逛街最方便。", "aboutEn": "Right next to Seda; the easiest place for meals and shopping.", "dist": "走路就到", "distEn": "A short walk", "km": "隔壁", "hours": "週一至五 11:00–21:00，週六日 10:00–22:00", "hoursEn": "Mon–Fri 11:00–21:00, Sat–Sun 10:00–22:00", "price": "", "priceEn": "", "book": "", "bookEn": "", "phone": "", "rate": "", "tip": "1/4 是週一，11:00 才開門。", "tipEn": "1/4 is a Monday; it opens at 11:00.", "lat": 10.3307, "lon": 123.9073, "q": "Ayala Malls Central Bloc", "day": "1/3"}, {"id": "ayala", "name": "Ayala Center Cebu", "en": "Large mall", "cat": "mall", "area": "宿霧・Cebu Business Park", "areaEn": "Cebu Business Park", "sum": "老牌大型購物中心", "sumEn": "Cebu's long-established big mall", "about": "品牌多、餐廳多，逛得比較完整。", "aboutEn": "Lots of brands and restaurants.", "dist": "離 Seda 約 1.3 km，Grab 約 10 分鐘", "distEn": "About 1.3 km from Seda, 10 min by Grab", "km": "1.3 km", "hours": "週一至五 11:00–21:00，週六日 10:00–22:00", "hoursEn": "Mon–Fri 11:00–21:00, Sat–Sun 10:00–22:00", "price": "", "priceEn": "", "book": "", "bookEn": "", "phone": "", "rate": "", "tip": "1/3 週日營業到 22:00。", "tipEn": "Open until 22:00 on Sunday 1/3.", "lat": 10.3182, "lon": 123.9052, "q": "Ayala Center Cebu", "day": "1/3"}, {"id": "sm", "name": "SM Seaside City Cebu", "en": "One of Cebu's largest malls", "cat": "mall", "area": "宿霧・SRP", "areaEn": "SRP, Cebu", "sum": "宿霧最大的商場之一", "sumEn": "One of Cebu's largest malls", "about": "規模很大，時間夠再去。", "aboutEn": "Huge; go if you have time.", "dist": "離 Seda 約 6 km，Grab 20–40 分鐘", "distEn": "About 6 km from Seda, 20–40 min by Grab", "km": "6 km", "hours": "週一至四 10:00–21:00，週五至日 10:00–22:00", "hoursEn": "Mon–Thu 10:00–21:00, Fri–Sun 10:00–22:00", "price": "", "priceEn": "", "book": "", "bookEn": "", "phone": "", "rate": "", "tip": "1/4 週一 10:00 開門，比 Ayala 早一小時。", "tipEn": "Opens at 10:00 on Monday 1/4, an hour before the Ayala malls.", "lat": 10.2818, "lon": 123.8816, "q": "SM Seaside City Cebu", "day": "1/3"}];
+  const byId = Object.fromEntries(SPOTS.map(x => [x.id, x]));
+
   let map, markers = [];
+  const markerById = {};
   function initMap() {
     if (map || !window.L) return;
     map = L.map("map", { scrollWheelZoom: false });
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+    const order = Object.keys(dayColors);
+    const points = places.map(([name, en, note, day, lat, lon, q]) => ({ name, en, note, day, lat, lon, q }))
+      .concat(SPOTS.map(x => ({ id: x.id, name: x.name, en: x.en, note: x.sum, day: x.day, lat: x.lat, lon: x.lon, q: x.q })))
+      .map((pt, i) => ({ ...pt, i })).sort((a, b) => order.indexOf(a.day) - order.indexOf(b.day) || a.i - b.i);
     const list = document.getElementById("places");
-    places.forEach(([name, en, note, day, lat, lon, q]) => {
-      const m = L.circleMarker([lat, lon], { radius: 9, color: "#fff", weight: 2, fillColor: dayColors[day], fillOpacity: 1 })
-        .addTo(map).bindPopup(`<b>${name}</b><br>${en}<br>${note}`);
+    points.forEach(pt => {
+      const m = L.circleMarker([pt.lat, pt.lon], { radius: 9, color: "#fff", weight: 2, fillColor: dayColors[pt.day], fillOpacity: 1 }).addTo(map);
+      const pop = document.createElement("div");
+      pop.append(Object.assign(document.createElement("b"), { textContent: pt.name }), document.createElement("br"), pt.en, document.createElement("br"), pt.note);
+      if (pt.id) {
+        const more = Object.assign(document.createElement("button"), { type: "button", className: "jump", textContent: "詳細資訊 Details" });
+        more.style.cssText = "display:block;margin-top:6px;border:0;background:none;padding:0;cursor:pointer;font:inherit";
+        more.addEventListener("click", () => openSheet(pt.id));
+        pop.append(more);
+        markerById[pt.id] = m;
+      }
+      m.bindPopup(pop);
       markers.push(m);
-      const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+      const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(pt.q);
       const li = document.createElement("li");
-      li.innerHTML = `<button type="button"><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${dayColors[day]};margin-right:8px"></i>${name}<small>${en}・${note}</small></button><a href="${url}" target="_blank" rel="noopener">導航<br>Navigate</a>`;
-      li.querySelector("button").addEventListener("click", () => { map.setView([lat, lon], 14); m.openPopup(); document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" }); });
+      li.innerHTML = `<button type="button"><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${dayColors[pt.day]};margin-right:8px"></i><span></span><small></small></button><a href="${url}" target="_blank" rel="noopener">導航<br>Navigate</a>`;
+      li.querySelector("span").textContent = pt.name;
+      li.querySelector("small").textContent = `${pt.en}・${pt.day === "彈性" ? "彈性 Flexible" : pt.note}`;
+      li.querySelector("button").addEventListener("click", () => { map.setView([pt.lat, pt.lon], 15); m.openPopup(); document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" }); });
       list.appendChild(li);
     });
     map.fitBounds(L.featureGroup(markers).getBounds().pad(0.08));
-    document.getElementById("legend").innerHTML = Object.entries(dayColors).map(([d, c]) => `<span><i style="background:${c}"></i>${d}</span>`).join("");
+    document.getElementById("legend").innerHTML = Object.entries(dayColors).map(([d, c]) => `<span><i style="background:${c}"></i>${dayName(d)}</span>`).join("");
   }
+
+  // place buttons
+  const withEn = (el, zh, en) => { el.textContent = zh; if (en) { const e = document.createElement("span"); e.className = "en"; e.lang = "en"; e.textContent = en; el.append(e); } return el; };
+  document.querySelectorAll(".picks[data-ids]").forEach(box => {
+    box.dataset.ids.split(",").forEach(id => {
+      const x = byId[id.trim()];
+      if (!x) return;
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "pick"; b.dataset.cat = x.cat;
+      b.setAttribute("aria-haspopup", "dialog");
+      b.append(Object.assign(document.createElement("b"), { textContent: x.name }),
+        withEn(Object.assign(document.createElement("span"), { className: "d" }), x.sum, x.sumEn),
+        Object.assign(document.createElement("span"), { className: "km", textContent: x.km }));
+      b.addEventListener("click", () => openSheet(x.id));
+      box.appendChild(b);
+    });
+  });
+
+  // info sheet
+  const sheet = document.getElementById("sheet");
+  let current = null;
+  function openSheet(id) {
+    const x = byId[id];
+    current = x;
+    withEn(sheet.querySelector(".sheet-area"), x.area, x.areaEn);
+    withEn(sheet.querySelector("h2"), x.name, x.name === x.en ? "" : x.en);
+    withEn(sheet.querySelector(".sheet-about"), x.about, x.aboutEn);
+    const dl = sheet.querySelector(".facts");
+    dl.textContent = "";
+    [["距離", "Distance", x.dist, x.distEn], ["營業時間", "Hours", x.hours, x.hoursEn], ["價位", "Price", x.price, x.priceEn],
+     ["訂位", "Booking", x.book, x.bookEn], ["Google 評分", "Rating", x.rate && `${x.rate}（2026/10 查詢）`, x.rate && "checked Oct 2026"]]
+      .forEach(([k, kEn, v, vEn]) => {
+        if (!v) return;
+        dl.append(withEn(document.createElement("dt"), k, kEn), withEn(document.createElement("dd"), v, vEn));
+      });
+    if (x.phone) {
+      const dd = document.createElement("dd");
+      dd.append(Object.assign(document.createElement("a"), { href: "tel:" + x.phone.replace(/\s/g, ""), textContent: x.phone }));
+      dl.append(withEn(document.createElement("dt"), "電話", "Phone"), dd);
+    }
+    const tip = sheet.querySelector(".tip");
+    tip.hidden = !x.tip;
+    if (x.tip) withEn(tip.querySelector("p"), x.tip, x.tipEn);
+    sheet.querySelector("a.btn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(x.q);
+    if (sheet.open) sheet.close();
+    sheet.showModal();
+  }
+  sheet.querySelector(".x").addEventListener("click", () => sheet.close());
+  sheet.addEventListener("click", e => { if (e.target === sheet) sheet.close(); });
+  sheet.querySelector(".btn.ghost").addEventListener("click", () => {
+    const x = current;
+    sheet.close();
+    select(document.getElementById("t-map"));
+    setTimeout(() => {
+      initMap();
+      if (!map) return;
+      map.invalidateSize();
+      map.setView([x.lat, x.lon], 15);
+      if (markerById[x.id]) markerById[x.id].openPopup();
+      document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 60);
+  });
 
   // tabs
   const tabs = [...document.querySelectorAll('[role="tab"]')];
