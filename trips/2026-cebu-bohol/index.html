@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宿霧・薄荷島｜旅遊規劃</title>
+<meta name="description" content="2026 跨年宿霧與薄荷島行程，含即時天氣、匯率與當地資訊">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #0E4D64;
+    --deep: #0A3D50;
+    --mango: #F2C14E;
+    --sand: #F7F3E8;
+    --page: #EAF2F3;
+    --ink: #12323F;
+    --muted: #4E6873;
+    --line: #D3E2E5;
+    --coral: #E2725B;
+    --sans: "Noto Sans TC", "Noto Sans CJK TC", system-ui, sans-serif;
+    --num: "Barlow Condensed", "Noto Sans TC", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 400 16px/1.7 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--mango); outline-offset: 2px; }
+  .num { font-family: var(--num); font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  /* postcard hero */
+  .hero { background: var(--sea); color: var(--sand); border-bottom: 8px solid var(--mango); }
+  .hero .wrap { padding: 20px 16px 26px; position: relative; }
+  .back { font-size: 14px; opacity: .85; text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+  .hero .kicker { display: block; margin-top: 22px; color: var(--mango); font-weight: 700; }
+  .hero h1 { margin: 4px 0 6px; font: 900 clamp(38px, 10vw, 56px)/1.1 var(--sans); letter-spacing: .02em; }
+  .hero p { margin: 0; opacity: .9; }
+  .postmark {
+    position: absolute; right: 16px; top: 56px;
+    width: 84px; height: 84px; border: 2px dashed var(--coral); border-radius: 50%;
+    display: grid; place-content: center; text-align: center; transform: rotate(-10deg);
+    color: var(--mango); line-height: 1.1;
+  }
+  .postmark b { font: 600 34px/1 var(--num); display: block; }
+  .postmark small { font-size: 12px; color: var(--sand); }
+
+  /* live tiles */
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--deep); color: var(--sand); }
+  .tile { padding: 12px 16px 14px; border-right: 1px solid rgba(247,243,232,.15); }
+  .tile:last-child { border-right: 0; }
+  .tile .v { font-size: 32px; line-height: 1.1; color: var(--mango); }
+  .tile .k { font-size: 13px; opacity: .85; }
+  .tile .s { font-size: 12px; opacity: .7; }
+
+  main.wrap { padding: 20px 16px 64px; }
+
+  /* tabs */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin: 0 0 16px; position: sticky; top: 0; background: var(--page); padding-top: 10px; z-index: 2; }
+  .tabs button {
+    flex: none; border: 0; cursor: pointer; font: 500 15px/1 var(--sans);
+    background: #fff; color: var(--ink); border-radius: 999px; padding: 9px 16px;
+  }
+  .tabs button[aria-selected="true"] { background: var(--sea); color: var(--sand); box-shadow: inset 0 -3px 0 var(--mango); }
+  [role="tabpanel"][hidden] { display: none; }
+
+  h2 { font: 900 22px/1.3 var(--sans); margin: 8px 0 12px; }
+  .card { background: var(--sand); border-radius: 6px; padding: 14px 16px; margin-bottom: 12px; position: relative; }
+  .card h3 { margin: 0 0 4px; font-size: 17px; color: var(--sea); }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .card ul { margin: 4px 0 0; padding-left: 1.2em; color: var(--muted); font-size: 15px; }
+  .where { display: inline-block; font-size: 13px; color: var(--sea); background: #fff; border-radius: 999px; padding: 0 10px; margin-bottom: 6px; }
+
+  /* day list */
+  .day { background: #fff; border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
+  .day header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .day .date { font: 600 26px/1 var(--num); color: var(--sea); }
+  .day .dow { color: var(--muted); font-size: 14px; }
+  .day h3 { margin: 0; font-size: 17px; }
+  .day ul { list-style: none; margin: 10px 0 0; padding: 0; }
+  .day li { padding: 8px 0 8px 18px; border-top: 1px solid var(--line); position: relative; }
+  .day li::before { content: ""; position: absolute; left: 2px; top: 17px; width: 8px; height: 8px; border-radius: 50%; background: var(--mango); }
+  .stay { display: block; margin-top: 8px; font-size: 14px; color: var(--muted); }
+  .pending { display: inline-block; font-size: 12px; color: var(--coral); border: 1px solid var(--coral); border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: 1px; }
+
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin: 0; }
+
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 480px) {
+    .postmark { width: 66px; height: 66px; top: 52px; }
+    .postmark b { font-size: 26px; }
+    .tile { padding: 10px 10px 12px; }
+    .tile .v { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <a class="back" href="../../">所有旅程</a>
+      <span class="kicker">跨年之旅</span>
+      <h1>宿霧・薄荷島</h1>
+      <p>2026/12/31 – 2027/1/4，5 天 4 夜，兩個人</p>
+      <div class="postmark" aria-live="polite"><b id="days">--</b><small id="days-label">天後出發</small></div>
+    </div>
+  </header>
+
+  <section class="tiles" aria-label="即時天氣與匯率">
+    <div class="tile"><div class="v num" data-wx="cebu">--</div><div class="k">宿霧</div><div class="s" data-wxt="cebu"></div></div>
+    <div class="tile"><div class="v num" data-wx="panglao">--</div><div class="k">邦勞島</div><div class="s" data-wxt="panglao"></div></div>
+    <div class="tile"><div class="v num" id="fx">--</div><div class="k">1 披索（新台幣）</div><div class="s" id="fx2"></div></div>
+  </section>
+
+  <main class="wrap">
+    <div class="tabs" role="tablist" aria-label="旅程資訊">
+      <button role="tab" id="t-plan" aria-controls="p-plan" aria-selected="true">行程</button>
+      <button role="tab" id="t-move" aria-controls="p-move" aria-selected="false" tabindex="-1">交通</button>
+      <button role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">購物</button>
+      <button role="tab" id="t-eat" aria-controls="p-eat" aria-selected="false" tabindex="-1">餐廳</button>
+      <button role="tab" id="t-see" aria-controls="p-see" aria-selected="false" tabindex="-1">景點</button>
+      <button role="tab" id="t-fun" aria-controls="p-fun" aria-selected="false" tabindex="-1">有趣的事</button>
+      <button role="tab" id="t-info" aria-controls="p-info" aria-selected="false" tabindex="-1">實用資訊</button>
+    </div>
+
+    <section role="tabpanel" id="p-plan" aria-labelledby="t-plan">
+      <h2>逐日行程</h2>
+      <article class="day">
+        <header><span class="date">12/31</span><span class="dow">週四</span><h3>抵達宿霧、跨年</h3></header>
+        <ul>
+          <li>搭星宇航空到宿霧</li>
+          <li>到 IT Park 入住，旁邊就是 Ayala Malls Central Bloc</li>
+          <li>晚上在市區等跨年煙火<span class="pending">地點 12 月公布</span></li>
+        </ul>
+        <span class="stay">住宿：Seda Central Bloc Cebu</span>
+      </article>
+      <article class="day">
+        <header><span class="date">1/1</span><span class="dow">週五</span><h3>搭船到薄荷島</h3></header>
+        <ul>
+          <li>宿霧 Pier 1 搭 OceanJet 商務艙到塔比拉蘭，約 2 小時<span class="pending">船票尚未開放</span></li>
+          <li>港口接送到邦勞島，約 30–45 分鐘</li>
+          <li>入住、海邊散步</li>
+        </ul>
+        <span class="stay">住宿：Henann Tawala Resort</span>
+      </article>
+      <article class="day">
+        <header><span class="date">1/2</span><span class="dow">週六</span><h3>薄荷島一日遊</h3></header>
+        <ul>
+          <li>行程規劃中<span class="pending">規劃中</span></li>
+        </ul>
+        <span class="stay">住宿：Henann Tawala Resort</span>
+      </article>
+      <article class="day">
+        <header><span class="date">1/3</span><span class="dow">週日</span><h3>回宿霧市區</h3></header>
+        <ul>
+          <li>上午在海邊放鬆、退房</li>
+          <li>塔比拉蘭搭 OceanJet 商務艙回宿霧<span class="pending">船票尚未開放</span></li>
+          <li>晚上在 IT Park 一帶吃飯逛街</li>
+        </ul>
+        <span class="stay">住宿：Seda Central Bloc Cebu</span>
+      </article>
+      <article class="day">
+        <header><span class="date">1/4</span><span class="dow">週一</span><h3>回台灣</h3></header>
+        <ul>
+          <li>搭星宇航空回桃園，上午出發要預留塞車時間</li>
+        </ul>
+      </article>
+    </section>
+
+    <section role="tabpanel" id="p-move" aria-labelledby="t-move" hidden>
+      <h2>交通</h2>
+      <div class="card"><span class="where">宿霧</span><h3>Grab 叫車</h3><p>市區移動以 Grab 為主。宿霧沒有捷運，BRT 公車目前只有部分路段營運（SRP 到 IT Park）。</p></div>
+      <div class="card"><span class="where">薄荷島</span><h3>沒有 Grab</h3><p>港口與飯店之間請飯店接送，或事先預約包車。三輪車（tricycle）適合短程。</p></div>
+      <div class="card"><span class="where">宿霧 ↔ 薄荷島</span><h3>OceanJet 快船</h3>
+        <ul>
+          <li>宿霧 Pier 1 到塔比拉蘭約 2 小時</li>
+          <li>開船前 45–60 分鐘到碼頭</li>
+          <li>碼頭稅要用披索現金另外付</li>
+        </ul>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="p-shop" aria-labelledby="t-shop" hidden>
+      <h2>購物</h2>
+      <div class="card"><span class="where">IT Park</span><h3>Ayala Malls Central Bloc</h3><p>就在住宿旁邊，走路就到，吃飯逛街都方便。</p></div>
+      <div class="card"><span class="where">宿霧市區</span><h3>Ayala Center Cebu</h3><p>宿霧老牌大型購物中心，品牌多、餐廳多。</p></div>
+      <div class="card"><span class="where">SRP</span><h3>SM Seaside City Cebu</h3><p>宿霧最大的購物中心之一，搭 Grab 前往。</p></div>
+    </section>
+
+    <section role="tabpanel" id="p-eat" aria-labelledby="t-eat" hidden>
+      <h2>餐廳</h2>
+      <div class="card"><span class="where">宿霧</span><h3>烤乳豬 lechon</h3><p>宿霧的招牌菜，皮脆肉香。Rico's Lechon、Zubuchon 都是當地常見的名店。</p></div>
+      <div class="card"><span class="where">邦勞島</span><h3>Bohol Bee Farm</h3><p>邦勞島上的有機農場餐廳，冰淇淋和麵包很有名。</p></div>
+      <div class="card"><span class="where">薄荷島</span><h3>羅柏河竹筏午餐</h3><p>坐在竹筏上沿河吃自助午餐，是薄荷島一日遊常見的行程。</p></div>
+    </section>
+
+    <section role="tabpanel" id="p-see" aria-labelledby="t-see" hidden>
+      <h2>景點</h2>
+      <div class="card"><span class="where">薄荷島</span><h3>巧克力山</h3><p>上千座圓錐形小山，乾季草色轉褐，看起來像一顆顆巧克力。</p></div>
+      <div class="card"><span class="where">薄荷島</span><h3>眼鏡猴保護區</h3><p>世界最小的靈長類之一。白天在睡覺，請保持安靜、不用閃光燈。</p></div>
+      <div class="card"><span class="where">邦勞島</span><h3>Alona Beach</h3><p>從飯店走路就到的白沙灘，傍晚看夕陽。</p></div>
+      <div class="card"><span class="where">宿霧</span><h3>聖嬰大教堂、麥哲倫十字架</h3><p>宿霧最有代表性的歷史景點，兩處就在隔壁。</p></div>
+    </section>
+
+    <section role="tabpanel" id="p-fun" aria-labelledby="t-fun" hidden>
+      <h2>有趣的事</h2>
+      <div class="card"><h3>Sinulog 祭典</h3><p>宿霧每年 1 月第三個星期日舉辦大遊行，跨年夜常常一起辦開幕煙火。</p></div>
+      <div class="card"><h3>吉普尼 jeepney</h3><p>彩繪得很誇張的改裝吉普車，是菲律賓最常見的大眾交通。</p></div>
+      <div class="card"><h3>宿霧是菲律賓最古老的城市</h3><p>1521 年麥哲倫在這裡登陸，市區還留著西班牙時期的建築。</p></div>
+    </section>
+
+    <section role="tabpanel" id="p-info" aria-labelledby="t-info" hidden>
+      <h2>實用資訊</h2>
+      <div class="card">
+        <dl class="facts">
+          <dt>簽證</dt><dd>台灣護照免簽 14 天，護照效期需 6 個月以上</dd>
+          <dt>eTravel</dt><dd>抵達前 72 小時內上網登錄，免費：etravel.gov.ph</dd>
+          <dt>貨幣</dt><dd>菲律賓披索（PHP），碼頭稅、三輪車要準備現金</dd>
+          <dt>電壓插頭</dt><dd>220V，A、B、C 型插頭</dd>
+          <dt>當地緊急電話</dt><dd class="num">911</dd>
+          <dt>外交部急難救助</dt><dd>0800-085-095（國內撥打）</dd>
+        </dl>
+      </div>
+    </section>
+
+    <footer>
+      最後更新：2026/10/7。行程由旅遊規劃師整理，出發前請再確認營業時間與交通資訊。天氣資料來自 Open-Meteo，匯率來自 ExchangeRate-API。
+    </footer>
+  </main>
+
+<script>
+  // countdown
+  (function () {
+    const start = new Date("2026-12-31T00:00:00+08:00"), end = new Date("2027-01-05T00:00:00+08:00"), now = new Date();
+    const d = Math.ceil((start - now) / 86400000);
+    const num = document.getElementById("days"), lab = document.getElementById("days-label");
+    if (d > 0) { num.textContent = d; lab.textContent = "天後出發"; }
+    else if (now < end) { num.textContent = "GO"; lab.textContent = "旅途中"; }
+    else { num.textContent = "✓"; lab.textContent = "已回國"; }
+  })();
+
+  // weather
+  const wxText = c => c === 0 ? "晴" : c <= 3 ? "多雲" : c <= 48 ? "有霧" : c <= 67 ? "雨" : c <= 82 ? "陣雨" : "雷雨";
+  const spots = { cebu: [10.3157, 123.8854], panglao: [9.5794, 123.7444] };
+  for (const [key, [lat, lon]] of Object.entries(spots)) {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=Asia%2FManila`)
+      .then(r => r.json())
+      .then(d => {
+        document.querySelector(`[data-wx="${key}"]`).textContent = Math.round(d.current.temperature_2m) + "°";
+        document.querySelector(`[data-wxt="${key}"]`).textContent = wxText(d.current.weather_code);
+      })
+      .catch(() => { document.querySelector(`[data-wx="${key}"]`).textContent = "—"; });
+  }
+
+  // exchange rate
+  fetch("https://open.er-api.com/v6/latest/PHP")
+    .then(r => r.json())
+    .then(d => {
+      const r = d.rates.TWD;
+      document.getElementById("fx").textContent = r.toFixed(3);
+      document.getElementById("fx2").textContent = "1,000 元約 " + Math.round(1000 / r).toLocaleString() + " 披索";
+    })
+    .catch(() => { document.getElementById("fx").textContent = "—"; });
+
+  // tabs
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  function select(tab) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    tab.focus();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") select(tabs[(i + 1) % tabs.length]);
+      if (e.key === "ArrowLeft") select(tabs[(i - 1 + tabs.length) % tabs.length]);
+    });
+  });
+</script>
+</body>
+</html>

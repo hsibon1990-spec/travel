@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>旅遊規劃</title>
+<meta name="description" content="旅程、行前資訊與當地即時天氣匯率">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --sea: #0E4D64; --deep: #0A3D50; --mango: #F2C14E; --sand: #F7F3E8; --page: #EAF2F3; --ink: #12323F; --muted: #4E6873; --coral: #E2725B; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 400 16px/1.7 "Noto Sans TC", "Noto Sans CJK TC", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  .top { background: var(--sea); color: var(--sand); border-bottom: 8px solid var(--mango); }
+  .top .wrap { padding: 48px 16px 32px; }
+  .top h1 { margin: 0 0 6px; font: 900 clamp(44px, 12vw, 64px)/1.05 "Noto Sans TC", sans-serif; letter-spacing: .04em; }
+  .top p { margin: 0; opacity: .9; }
+  main.wrap { padding-top: 28px; padding-bottom: 64px; }
+  .trip {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--sand); border-radius: 6px; padding: 18px 18px 16px; position: relative;
+    box-shadow: 0 2px 0 rgba(14,77,100,.15);
+  }
+  .trip:focus-visible { outline: 3px solid var(--mango); outline-offset: 3px; }
+  .trip .kicker { color: var(--coral); font-weight: 700; font-size: 14px; }
+  .trip h2 { margin: 2px 0 4px; font: 900 30px/1.2 "Noto Sans TC", sans-serif; color: var(--sea); padding-right: 92px; }
+  .trip p { margin: 0; color: var(--muted); }
+  .trip .pm {
+    position: absolute; right: 16px; top: 16px; width: 76px; height: 76px; border: 2px dashed var(--coral); border-radius: 50%;
+    display: grid; place-content: center; text-align: center; transform: rotate(-10deg); color: var(--sea); line-height: 1.1;
+  }
+  .trip .pm b { font: 600 30px/1 "Barlow Condensed", sans-serif; display: block; }
+  .trip .pm small { font-size: 12px; color: var(--muted); }
+  .trip .go { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--sea); border-bottom: 2px solid var(--mango); }
+  footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>旅遊規劃</h1>
+      <p>每一趟旅程的行程、交通、當地天氣與匯率。</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <a class="trip" href="trips/2026-cebu-bohol/">
+      <span class="kicker">跨年之旅・規劃中</span>
+      <h2>宿霧・薄荷島</h2>
+      <p>2026/12/31 – 2027/1/4，5 天 4 夜</p>
+      <span class="pm" aria-hidden="true"><b id="days">--</b><small>天後出發</small></span>
+      <span class="go">查看行程</span>
+    </a>
+    <footer>行程由旅遊規劃師整理。出發前請再確認營業時間與交通資訊。</footer>
+  </main>
+<script>
+  const d = Math.ceil((new Date("2026-12-31T00:00:00+08:00") - new Date()) / 86400000);
+  document.getElementById("days").textContent = d > 0 ? d : "GO";
+</script>
+</body>
+</html>
