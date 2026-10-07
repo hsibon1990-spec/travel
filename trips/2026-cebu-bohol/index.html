@@ -179,6 +179,9 @@
   .btn .en { color: inherit; opacity: .8; }
   .btn.ghost { background: #fff; color: var(--sea); box-shadow: inset 0 0 0 2px var(--sea); }
 
+  .tipfacts { background: #fff; border-radius: 12px; padding: 12px 14px; margin-top: 10px; }
+  .tipfacts dd b { color: var(--sea); }
+  @media (max-width: 560px) { .tipfacts { grid-template-columns: 1fr; gap: 0; } .tipfacts dt { margin-top: 12px; font-weight: 700; color: var(--ink); } .tipfacts dt:first-child { margin-top: 0; } .tipfacts dt .en { display: inline; margin-left: 6px; } }
   footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
 
   @media (max-width: 560px) {
@@ -420,7 +423,7 @@
         <div class="group"><h4>平價、甜點、咖啡<span class="en" lang="en">Casual, dessert and coffee</span></h4><div class="picks" data-ids="paeng,mocobay,crew,beefarm"></div></div>
         <div class="card" style="margin-top:14px"><h3>用餐提醒<span class="en" lang="en">Dining tips</span></h3><ul>
           <li>不生飲自來水，喝瓶裝水。<span class="en" lang="en">Don't drink tap water; drink bottled water.</span></li>
-          <li>帳單常已含服務費，沒含的話可以留約一成小費。<span class="en" lang="en">Bills often include a service charge; if not, tip about 10%.</span></li>
+          <li>帳單有 10% 服務費就不用再給小費；沒有的話留約一成。<span class="en" lang="en">If the bill has a 10% service charge, no extra tip is needed; otherwise tip about 10%.</span></li>
           <li>海鮮多半秤重計價，點餐前先問價錢。<span class="en" lang="en">Seafood is usually priced by weight; ask before ordering.</span></li></ul></div>
       </div>
       <div class="subpane" id="sp-sp-spa" role="tabpanel" aria-labelledby="sn-sp-spa" hidden>
@@ -451,7 +454,7 @@
         <li>夏季衣物、薄外套（冷氣強）、泳衣、拖鞋、好走的鞋。<span class="en" lang="en">Summer clothes, a light jacket for strong air-con, swimwear, sandals, walking shoes.</span></li>
         <li>防曬乳、帽子、防蚊液、暈船藥、常備藥。<span class="en" lang="en">Sunscreen, hat, insect repellent, seasickness pills, personal medicine.</span></li>
         <li>萬用轉接頭：菲律賓是 220V，A、B、C 型插頭。<span class="en" lang="en">Travel adapter: 220V, plug types A, B and C.</span></li>
-        <li>小額披索現金：碼頭稅、三輪車、小費、鄉間景點門票。<span class="en" lang="en">Small pesos in cash for terminal fees, tricycles, tips and countryside entry fees.</span></li></ul></div>
+        <li>小額披索現金：碼頭稅、三輪車、小費、鄉間景點門票。小費行情見「實用資訊」。<span class="en" lang="en">Small pesos in cash for terminal fees, tricycles, tips and countryside entry fees. See Essentials for tipping rates.</span></li></ul></div>
     </section>
 
     <!-- 交通 -->
@@ -489,6 +492,20 @@
           <dt>當地緊急電話<span class="en" lang="en">Emergency</span></dt><dd class="num">911</dd>
           <dt>外交部急難救助<span class="en" lang="en">Taiwan MOFA hotline</span></dt><dd>0800-085-095（國內撥打）<span class="en" lang="en">Dial from within Taiwan</span></dd>
         </dl>
+      </div>
+      <div class="card" id="tipping"><h3>小費<span class="en" lang="en">Tipping</span></h3>
+        <p>菲律賓給小費不是強制，但很普遍，金額不大，心意比較重要。以下是 2026 年旅遊指南的常見行情。<span class="en" lang="en">Tipping isn't required in the Philippines but is common. Amounts are small. These are typical 2026 rates from travel guides.</span></p>
+        <dl class="facts tipfacts">
+          <dt>飯店行李員<span class="en" lang="en">Hotel porter</span></dt><dd><b>會給</b>：每件行李 ₱50，送到房間時給。<span class="en" lang="en">Yes: ₱50 per bag, when they bring bags to your room.</span></dd>
+          <dt>房務清潔<span class="en" lang="en">Housekeeping</span></dt><dd><b>會給</b>：每晚 ₱50–100。每天早上放在枕頭上，附一張「For housekeeping」紙條，因為每天打掃的人可能不同。<span class="en" lang="en">Yes: ₱50–100 per night. Leave it on the pillow each morning with a "For housekeeping" note, since the cleaner may change daily.</span></dd>
+          <dt>飯店櫃台<span class="en" lang="en">Front desk</span></dt><dd><b>一般不用</b>。幫忙安排包車、跨年接送或早餐盒時，可以給 ₱100–200 表示感謝。<span class="en" lang="en">Not usually. If they arrange a van, a New Year's Eve car or a breakfast box, ₱100–200 is a nice thank-you.</span></dd>
+          <dt>餐廳<span class="en" lang="en">Restaurants</span></dt><dd><b>先看帳單</b>：有 10% Service Charge 就不用再給，依菲律賓法律（RA 11360）這筆錢會全數分給員工。服務特別好可以再留 ₱20–50。沒有服務費的話給約 10%。小吃店、外帶不用給。<span class="en" lang="en">Check the bill. If it has a 10% service charge, you don't need to add more; by law (RA 11360) it all goes to staff. Leave ₱20–50 extra for great service. With no service charge, tip about 10%. No tip at casual counters or for takeaway.</span></dd>
+          <dt>包車司機<span class="en" lang="en">Private van driver</span></dt><dd><b>會給</b>：1/2 半日包車 ₱200–300（全日 ₱300–500）；港口接送 ₱50–100。下車時直接給司機。<span class="en" lang="en">Yes: ₱200–300 for the half-day van on 1/2 (₱300–500 for a full day); ₱50–100 for port transfers. Hand it to the driver at the end.</span></dd>
+          <dt>按摩<span class="en" lang="en">Massage</span></dt><dd><b>會給</b>：每人 ₱100–200，約價格的 10–20%，結束後直接給師傅。<span class="en" lang="en">Yes: ₱100–200 per person, about 10–20% of the price, handed to your therapist afterwards.</span></dd>
+          <dt>Grab、三輪車<span class="en" lang="en">Grab, tricycles</span></dt><dd><b>不用</b>。Grab 想給可以在 App 裡加 ₱20–50；三輪車講好價就照價付。<span class="en" lang="en">No. You can add ₱20–50 in the Grab app if you like; pay tricycles the agreed fare.</span></dd>
+          <dt>碼頭搬運工<span class="en" lang="en">Pier porter</span></dt><dd><b>有請人搬才給</b>：每件 ₱20–50。<span class="en" lang="en">Only if you use one: ₱20–50 per bag.</span></dd>
+        </dl>
+        <div class="tip"><strong>領隊叮嚀<span class="en" lang="en">Tour leader note</span></strong><p style="margin:0;font-size:14.5px">準備一疊 ₱20、₱50、₱100 小鈔。ATM 多半吐 ₱500、₱1,000，到商場或超市買東西時順便換開。<span class="en" lang="en">Carry a stack of ₱20, ₱50 and ₱100 notes. ATMs mostly give ₱500 and ₱1,000 notes, so break them when shopping at a mall or supermarket.</span></p></div>
       </div>
       <div class="card"><h3>安全<span class="en" lang="en">Safety</span></h3><ul>
         <li>人多的地方注意手機和錢包，背包背在前面。<span class="en" lang="en">Watch your phone and wallet in crowds; wear your backpack in front.</span></li>
