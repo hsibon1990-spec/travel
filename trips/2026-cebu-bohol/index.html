@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 <style>
   :root {
     --sea: #0E4D64; --deep: #0A3D50; --mango: #F2C14E; --sand: #F7F3E8; --page: #EAF2F3;
@@ -82,6 +84,16 @@
   .facts dt { color: var(--muted); }
   .facts dd { margin: 0; }
 
+  #map { height: 420px; border-radius: 14px; background: #dfeaec; z-index: 1; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 0 14px; font-size: 14px; color: var(--muted); }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .places { list-style: none; margin: 0; padding: 0; }
+  .places li { background: #fff; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+  .places button { border: 0; background: none; font: 500 15px/1.4 var(--sans); color: var(--ink); text-align: left; cursor: pointer; padding: 0; }
+  .places small { display: block; color: var(--muted); font-size: 13px; }
+  .places a { flex: none; font-size: 13px; color: var(--sea); }
+  .leaflet-popup-content { font: 400 14px/1.5 var(--sans); }
+
   footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
 
   @media (max-width: 560px) {
@@ -114,6 +126,7 @@
   <main class="wrap">
     <div class="tabs" role="tablist" aria-label="旅程資訊">
       <button role="tab" id="t-plan" aria-controls="p-plan" aria-selected="true">行程</button>
+      <button role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">地圖</button>
       <button role="tab" id="t-prep" aria-controls="p-prep" aria-selected="false" tabindex="-1">行前準備</button>
       <button role="tab" id="t-move" aria-controls="p-move" aria-selected="false" tabindex="-1">交通</button>
       <button role="tab" id="t-shop" aria-controls="p-shop" aria-selected="false" tabindex="-1">購物</button>
@@ -222,6 +235,15 @@
           </ul>
         </div>
       </article>
+    </section>
+
+    <!-- 地圖 -->
+    <section role="tabpanel" id="p-map" aria-labelledby="t-map" hidden>
+      <h2>地圖</h2>
+      <p class="lead">顏色代表哪一天會去。點名稱可以在地圖上定位，「導航」會用 Google 地圖開啟。標記位置為約略位置。</p>
+      <div id="map" role="img" aria-label="旅程地點地圖"></div>
+      <div class="legend" id="legend"></div>
+      <ul class="places" id="places"></ul>
     </section>
 
     <!-- 行前準備 -->
@@ -360,6 +382,44 @@
     })
     .catch(() => { document.getElementById("fx").textContent = "—"; });
 
+  // map (Leaflet + OpenStreetMap, free)
+  const dayColors = { "12/31": "#E2725B", "1/1": "#F2C14E", "1/2": "#2E9E6B", "1/3": "#0E4D64", "1/4": "#7A6FB0" };
+  const places = [
+    ["麥克坦－宿霧國際機場", "12/31、1/4", "12/31", 10.3075, 123.9794, "Mactan-Cebu International Airport"],
+    ["Seda Central Bloc Cebu", "12/31、1/3 住宿", "12/31", 10.3297, 123.9055, "Seda Central Bloc Cebu"],
+    ["Ayala Malls Central Bloc", "飯店旁的商場", "12/31", 10.3303, 123.9061, "Ayala Malls Central Bloc"],
+    ["宿霧 Pier 1（OceanJet）", "1/1 出發、1/3 抵達", "1/1", 10.2943, 123.9066, "OceanJet Cebu Pier 1"],
+    ["塔比拉蘭港", "1/1 抵達、1/3 出發", "1/1", 9.6455, 123.8527, "Tagbilaran City Tourist Port"],
+    ["Henann Tawala Resort", "1/1、1/2 住宿", "1/1", 9.5497, 123.7765, "Henann Tawala Resort Panglao"],
+    ["Alona Beach", "看夕陽", "1/1", 9.5502, 123.7743, "Alona Beach Panglao"],
+    ["巧克力山", "1/2 一日遊", "1/2", 9.8297, 124.1398, "Chocolate Hills Complex Carmen Bohol"],
+    ["眼鏡猴保護區", "1/2 一日遊", "1/2", 9.6878, 123.9540, "Philippine Tarsier Sanctuary Corella"],
+    ["羅柏河竹筏午餐", "1/2 一日遊", "1/2", 9.6383, 124.0325, "Loboc River Cruise"],
+    ["Baclayon 教堂", "1/2 一日遊", "1/2", 9.6230, 123.9119, "Baclayon Church"],
+    ["Bohol Bee Farm", "雨天備案", "1/2", 9.5867, 123.8044, "Bohol Bee Farm"],
+    ["SM Seaside City Cebu", "購物", "1/3", 10.2817, 123.8806, "SM Seaside City Cebu"],
+    ["聖嬰大教堂", "景點", "1/3", 10.2943, 123.9020, "Basilica Minore del Santo Nino Cebu"]
+  ];
+  let map, markers = [];
+  function initMap() {
+    if (map || !window.L) return;
+    map = L.map("map", { scrollWheelZoom: false });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+    const list = document.getElementById("places");
+    places.forEach(([name, note, day, lat, lon, q], i) => {
+      const m = L.circleMarker([lat, lon], { radius: 9, color: "#fff", weight: 2, fillColor: dayColors[day], fillOpacity: 1 })
+        .addTo(map).bindPopup(`<b>${name}</b><br>${note}`);
+      markers.push(m);
+      const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+      const li = document.createElement("li");
+      li.innerHTML = `<button type="button"><i style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${dayColors[day]};margin-right:8px"></i>${name}<small>${note}</small></button><a href="${url}" target="_blank" rel="noopener">導航</a>`;
+      li.querySelector("button").addEventListener("click", () => { map.setView([lat, lon], 14); m.openPopup(); document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" }); });
+      list.appendChild(li);
+    });
+    map.fitBounds(L.featureGroup(markers).getBounds().pad(0.08));
+    document.getElementById("legend").innerHTML = Object.entries(dayColors).map(([d, c]) => `<span><i style="background:${c}"></i>${d}</span>`).join("");
+  }
+
   // tabs
   const tabs = [...document.querySelectorAll('[role="tab"]')];
   function select(tab) {
@@ -370,6 +430,7 @@
       document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
     });
     tab.focus();
+    if (tab.id === "t-map") { initMap(); if (map) setTimeout(() => map.invalidateSize(), 50); }
   }
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => select(t));
