@@ -42,7 +42,7 @@ window.ZHONGSHAN_DATA = {
     {category:'check',name:'交通選定後核對',status:'出發前確認',scope:'此為使用既有交通官方來源前的核對欄位，不是任何交通安排或購買指示。',confirm:'指定日期的服務範圍、班次、票價、購票規則、行李、通關、下車點及臨時公告。',sources:[['香港國際機場：Mainland coaches','https://www.hongkongairport.com/en/transport/mainland-connection/mainland-coaches/','2026-10-18'],['港鐵高速鐵路：Destination','https://www.highspeed.mtr.com.hk/en/ticket/destination.html','2026-10-18'],['港珠澳大橋穿梭巴士','https://www.hzmbus.com/message.html?tab=1','2026-10-18']]},
     {category:'check',name:'場館選定後核對',status:'出發前確認',scope:'此為使用既有場館官方來源前的核對欄位，不表示任何場館當日開放或可使用。',confirm:'開放、最後入場、預約、入館規則、臨時公告、入口及自行需要的現場服務資訊。',sources:[['中山市南朗街道：孫中山故居紀念館','https://www.zs.gov.cn/nlz/zjnl/nlgk/lyjd/content/post_2438611.html','2026-10-18'],['中山市政府：中山文化場館資料','https://www.zs.gov.cn/zjzs/lygg/zssj/content/post_2399556.html','2026-10-18']]},
     {category:'check',name:'餐飲選定後核對',status:'出發前確認',scope:'此為使用既有餐飲候選線索前的核對欄位，不表示任何店家當日營業、供應或可訂位。',confirm:'店家當期官方聯絡方式、營業、訂位或候位、當日菜單與供應、支付、現場規則與交通資訊。',sources:[['中山市商務局','https://www.zs.gov.cn/swj/zwdt/content/post_2337131.html','2026-10-18']]},
-    {category:'check',name:'個人資料與付款安全',status:'出發前確認',scope:'本頁的使用規則；不蒐集、不保存證件號碼、付款資料、帳號或密碼。',confirm:'如需向官方、承運者或店家查詢，請只在對方正式流程中自行處理必要資料。',sources:[['本頁資料治理規則（無外部資料來源）','#data-governance','2026-10-22']]}
+
   ],
   checklist: [
     '交通：服務範圍、班次、票價、購票規則、行李、通關與臨時公告',

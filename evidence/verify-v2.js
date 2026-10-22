@@ -6,7 +6,7 @@ vm.createContext(sandbox);
 vm.runInContext(source, sandbox);
 const data = sandbox.window.ZHONGSHAN_DATA;
 const required = ['name', 'status', 'scope', 'confirm', 'sources'];
-const bad = data.items.filter((item) => required.some((key) => !item[key]) || !Array.isArray(item.sources) || !item.sources.length || item.sources.some((sourceItem) => !/^https?:\/\//.test(sourceItem[1]) && sourceItem[1] !== '#data-governance'));
+const bad = data.items.filter((item) => required.some((key) => !item[key]) || !Array.isArray(item.sources) || !item.sources.length || item.sources.some((sourceItem) => !/^https?:\/\//.test(sourceItem[1])));
 const categoryCounts = Object.fromEntries(data.categories.map((category) => [category.id, data.items.filter((item) => item.category === category.id).length]));
 const html = fs.readFileSync('trips/2026-hongkong-zhongshan/index.html', 'utf8');
 const app = fs.readFileSync('trips/2026-hongkong-zhongshan/app.js', 'utf8');
